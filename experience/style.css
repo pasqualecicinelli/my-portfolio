@@ -95,6 +95,9 @@ header .logo {
   text-decoration: none;
   color: #0e2431;
 }
+header .logo:hover {
+  color: #fc8c05;
+}
 header .logo-img {
   width: 40px;
   height: 40px;
@@ -103,9 +106,6 @@ header .logo-img {
 }
 header .logo-img:hover {
   mix-blend-mode: difference;
-}
-header .logo:hover {
-  color: #fc8c05;
 }
 header .navbar ul {
   list-style: none;
