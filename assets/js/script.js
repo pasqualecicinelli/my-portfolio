@@ -116,7 +116,7 @@ function showProjects(projects) {
       projectHTML += `
         <div class="box tilt">
       <img draggable="false"
-       src="/assets/images/projects/${project.image}.png" 
+       src="./assets/images/projects/${project.image}.png" 
        alt="project" />
       <div class="content">
         <div class="tag">
