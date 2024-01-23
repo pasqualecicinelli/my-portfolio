@@ -20,10 +20,10 @@ $(document).ready(function () {
 document.addEventListener("visibilitychange", function () {
   if (document.visibilityState === "visible") {
     document.title = "Progetti | Portfolio Pasquale Cicinelli";
-    $("#favicon").attr("href", "/assets/images/favicon.png");
+    $("#favicon").attr("href", "./assets/images/favicon.png");
   } else {
     document.title = "Torna indietro al Portfolio";
-    $("#favicon").attr("href", "/assets/images/favhand.png");
+    $("#favicon").attr("href", "./assets/images/favhand.png");
   }
 });
 
@@ -44,7 +44,7 @@ function showProjects(projects) {
     projectsHTML += `
         <div class="grid-item ${project.category}">
         <div class="box tilt" style="width: 320px; margin: 1rem">
-      <img draggable="false" src="/assets/images/projects/${
+      <img draggable="false" src="../assets/images/projects/${
         project.image
       }.png" alt="project" />
       <div class="content">
