@@ -825,9 +825,9 @@ header .navbar ul li a:hover {
   padding: 1.6rem 3rem;
   border-radius: 0.5em;
   transition: 0.5s;
-  color: rgb(255, 255, 255);
   font-weight: 700;
-  border: 2px solid #fff;
+  background-color: #fff;
+  color: #2506ad;
   box-shadow: 0px 5px 10px rgba(65, 84, 241, 0.4);
   text-align: center;
 }
@@ -842,8 +842,9 @@ header .navbar ul li a:hover {
   transition: 0.3s;
 }
 .work .viewall .btn:hover {
-  background: #fff;
-  color: #2506ad;
+  background: linear-gradient(to right, #000, #3533cb);
+  color: rgb(255, 255, 255);
+  border: 1px solid #fff;
 }
 .work .viewall .btn:hover i {
   transform: translateX(5px);
@@ -979,9 +980,9 @@ header .navbar ul li a:hover {
   padding: 1.6rem 3rem;
   border-radius: 0.5em;
   transition: 0.5s;
-  border: 1px solid #2506ad;
   box-shadow: 0px 5px 10px rgba(48, 68, 247, 0.6);
-  color: #2506ad;
+  color: #fff;
+  background: #2506ad;
   /* background: rgb(255, 255, 255); */
   text-align: center;
 }
@@ -996,8 +997,9 @@ header .navbar ul li a:hover {
   transition: 0.3s;
 }
 .morebtn .btn:hover {
-  color: #fff;
-  background: #2506ad;
+  color: #2506ad;
+  background: #f7f7f7;
+  border: 1px solid #2506ad;
 }
 .morebtn .btn:hover i {
   transform: translateX(5px);
