@@ -120,7 +120,6 @@ header .navbar ul {
   list-style: none;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 header .navbar li {
   margin-left: 2rem;
@@ -156,7 +155,7 @@ header .navbar ul li a:hover {
     position: fixed;
     top: 6.5rem;
     right: -120%;
-    width: 75%;
+    width: 50%;
     height: 100%;
     text-align: left;
     align-items: flex-start;
@@ -171,7 +170,7 @@ header .navbar ul li a:hover {
     width: 100%;
     margin: 1rem 0;
     border-radius: 0.5rem;
-    width: 26rem;
+    width: 15rem;
   }
   header .navbar ul li a {
     display: block;
