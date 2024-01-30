@@ -52,12 +52,27 @@
       <nav class="navbar">
         <ul>
           <li><a class="active" href="#home">Home</a></li>
-          <li><a href="#about">Chi sono</a></li>
-          <li><a href="#skills">Abilità</a></li>
-          <li><a href="#education">Formazione</a></li>
-          <li><a href="#work">Progetti</a></li>
-          <li><a href="#experience">Esperienze</a></li>
-          <li><a href="#contact">Contatti</a></li>
+          <li data-lang="it"><a href="#about">Chi sono</a></li>
+          <li data-lang="en"><a href="#about">About</a></li>
+          <li data-lang="it"><a href="#skills">Abilità</a></li>
+          <li data-lang="en"><a href="#skills">Skills</a></li>
+          <li data-lang="it"><a href="#education">Formazione</a></li>
+          <li data-lang="en"><a href="#education">Education</a></li>
+          <li data-lang="it"><a href="#work">Progetti</a></li>
+          <li data-lang="en"><a href="#work">Projects</a></li>
+          <li data-lang="it"><a href="#experience">Esperienze</a></li>
+          <li data-lang="en"><a href="#experience">Experience</a></li>
+          <li data-lang="it"><a href="#contact">Contatti</a></li>
+          <li data-lang="en"><a href="#contact">Contact</a></li>
+          <li class="dropdown">
+            <a class="nav-link" href="#"
+              >Language <i class="fas fa-chevron-down"></i
+            ></a>
+            <ul name="language" id="language">
+              <li data-lang="en"><a href="#">Italiano</a></li>
+              <li data-lang="it"><a href="#">English</a></li>
+            </ul>
+          </li>
         </ul>
       </nav>
     </header>
@@ -68,13 +83,19 @@
       <div id="particles-js"></div>
 
       <div class="content">
-        <h2>
+        <h2 data-lang="it">
           Ciao,<br />
           sono pasquale <span>cicinelli</span>
         </h2>
-        <p>mi occupo di <span class="typing-text"></span></p>
+        <h2 data-lang="en">
+          Hello,<br />
+          I'm pasquale <br /><span>cicinelli</span>
+        </h2>
+        <p data-lang="it">mi occupo di <span class="typing-text-it"></span></p>
+        <p data-lang="en">I am into <span class="typing-text-en"></span></p>
         <a href="#about" class="btn"
-          ><span>Chi sono?</span>
+          ><span data-lang="it">Chi sono?</span>
+          <span data-lang="en">Who am I?</span>
           <i class="fas fa-arrow-circle-down"></i>
         </a>
         <div class="socials">
@@ -113,14 +134,26 @@
 
     <!-- about section starts -->
     <section class="about" id="about">
-      <h2 class="heading">
+      <h2 class="heading" data-lang="it">
         <i class="fas fa-user-alt"></i> Chi <span>sono?</span>
       </h2>
-      <p class="quote">
-        Per veramente conoscere una persona, non limitatevi a ascoltare le sue
+      <p class="quote" data-lang="it">
+        Per conoscere veramente una persona, non limitatevi ad ascoltare le sue
         parole, ma osservate con attenzione le sue azioni.
         <span>
           È nell'operare che si manifesta la vera essenza di un individuo</span
+        >
+      </p>
+      <h2 class="heading" data-lang="en">
+        <i class="fas fa-user-alt"></i> Who <span>am I?</span>
+      </h2>
+
+      <p class="quote" data-lang="en">
+        To truly know a person, don't just listen to their words, but observe
+        their actions carefully.
+        <span>
+          It is in their actions that the true essence of an individual is
+          revealed</span
         >
       </p>
 
@@ -134,14 +167,21 @@
           />
         </div>
         <div class="content">
-          <h3>Sono pasquale</h3>
+          <h3 data-lang="it">Sono pasquale</h3>
+          <h3 data-lang="en">I am Pasquale</h3>
           <span class="tag">Junior Full Stack Web Developer</span>
 
-          <p>
+          <p data-lang="it">
             Inseguo gli obiettivi con l'entusiasmo di sempre, impegnandomi
             costantemente nella crescita personale e professionale. Sviluppatore
             web appassionato, cerco continuamente nuove sfide per affinare le
             mie competenze e creare soluzioni innovative.
+          </p>
+          <p data-lang="en">
+            I pursue goals with the same enthusiasm, constantly engaging in
+            personal and professional growth. A passionate web developer, I
+            continually seek new challenges to refine my skills and create
+            innovative solutions.
           </p>
 
           <div class="box-container">
@@ -151,7 +191,10 @@
             </div> -->
             <div class="box">
               <p><span> email : </span> pasqualecicinelli89@gmail.com</p>
-              <p><span> città : </span> Bari, Italia - 70019</p>
+              <p>
+                <span data-lang="it"> città : </span
+                ><span data-lang="en"> city : </span> Bari, Italia - 70019
+              </p>
             </div>
           </div>
 
@@ -160,7 +203,8 @@
               href="https://drive.google.com/file/d/1PnpR2b1cOZL78Krq2YH3MSGsIKAcvVnj/view?usp=sharing"
               target="_blank"
               class="btn"
-              ><span>curriculum vitae</span>
+              ><span data-lang="it">curriculum vitae</span>
+              <span data-lang="en">Resume</span>
               <i class="fas fa-chevron-right"></i>
             </a>
           </div>
@@ -171,15 +215,25 @@
 
     <!-- skills section starts -->
     <section class="skills" id="skills">
-      <h2 class="heading">
+      <h2 class="heading" data-lang="it">
         <i class="fas fa-laptop-code"></i> Abilità & <span>Capacità</span>
       </h2>
-      <p class="quote">
+      <h2 class="heading" data-lang="en">
+        <i class="fas fa-laptop-code"></i> Skills & <span>Capabilities</span>
+      </h2>
+      <p class="quote" data-lang="it">
         Le abilità e capacità sono le chiavi per aprire le porte
         dell'innovazione,
         <span
           >trasformando codice in soluzioni straordinarie e dando vita a idee
           rivoluzionarie</span
+        >
+      </p>
+      <p class="quote" data-lang="en">
+        Skills and capabilities are the keys to unlock the doors of innovation,
+        <span
+          >transforming code into extraordinary solutions and bringing
+          revolutionary ideas to life</span
         >
       </p>
 
@@ -198,13 +252,22 @@
 
     <!-- education section starts -->
     <section class="education" id="education">
-      <h1 class="heading">
+      <h1 class="heading" data-lang="it">
         <i class="fas fa-graduation-cap"></i> La mia <span>Formazione</span>
       </h1>
 
-      <p class="quote">
+      <h1 class="heading" data-lang="en">
+        <i class="fas fa-graduation-cap"></i> My <span>Education</span>
+      </h1>
+
+      <p class="quote" data-lang="it">
         L’educazione non è l’apprendimento dei fatti,
         <span> ma l’allenamento della mente a pensare</span>
+      </p>
+
+      <p class="quote" data-lang="en">
+        Education is not the learning of facts,
+        <span> but the training of the mind to think</span>
       </p>
 
       <div class="box-container">
@@ -212,12 +275,19 @@
           <div class="content">
             <h3>Boolean</h3>
             <p class="certificate">Full Stack Web Developer</p>
-            <p>
+            <p data-lang="it">
               Corso della durata di 6 mesi dove ho appreso varie tecnologie sia
               lato front-end che back-end, costruendo siti web responsive,
               aggiungendo iterazioni alle pagine, interrogando database, creando
               applicazioni web. Lavorando sia in autonomia che anche in gruppo
               concludendo con un progetto finale
+            </p>
+            <p data-lang="en">
+              A 6-month course where I learned various technologies both
+              front-end and back-end, building responsive websites, adding
+              interactions to pages, querying databases, and creating web
+              applications. Worked both independently and in groups, concluding
+              with a final project
             </p>
             <h4>2023</h4>
           </div>
@@ -225,12 +295,18 @@
 
         <div class="box">
           <div class="content">
-            <h3>Comune di Mazzarrà Sant’Andrea</h3>
-            <p class="certificate">Dattilografia</p>
-            <p>
+            <h3 data-lang="it">Comune di Mazzarrà Sant’Andrea</h3>
+            <p class="certificate" data-lang="it">Dattilografia</p>
+            <h3 data-lang="en">Municipality of Mazzarrà Sant’Andrea</h3>
+            <p class="certificate" data-lang="en">Typing</p>
+            <p data-lang="it">
               Durata di 200 ore, argomenti: il sistema scolastico italiano post
               riforma, la tastiera, il software per dattilografia esercitazioni
               di battitura
+            </p>
+            <p data-lang="en">
+              Duration of 200 hours, topics: the Italian school system
+              post-reform, the keyboard, typing software, typing exercises
             </p>
             <h4>2020</h4>
           </div>
@@ -240,10 +316,15 @@
           <div class="content">
             <h3>Salvemini</h3>
             <p class="certificate">Coding</p>
-            <p>
+            <p data-lang="it">
               Durata di 150 ore, argomenti: pensiero computazionale, funzione
               educativa normativa scolastica, coding, strategie e sviluppo delle
               competenze didattiche
+            </p>
+            <p data-lang="en">
+              Duration of 150 hours, topics: computational thinking, normative
+              educational function, coding, strategies, and development of
+              didactic skills
             </p>
             <h4>2020</h4>
           </div>
@@ -258,12 +339,22 @@
             />
           </div>
           <div class="content">
-            <h3>Università degli Studi di Bari Aldo Moro</h3>
-            <p class="certificate">Informatica e Comunicazione Digitale</p>
-            <p>
+            <h3 data-lang="it">Università degli Studi di Bari Aldo Moro</h3>
+            <p class="certificate" data-lang="it">
+              Informatica e Comunicazione Digitale
+            </p>
+            <p data-lang="it">
               Frequenza universitaria che ha plasmato la mia mentalità per
               affrontare con entusiasmo le sfide in continua evoluzione di
               questo campo dinamico
+            </p>
+            <h3 data-lang="en">University of Bari Aldo Moro</h3>
+            <p class="certificate" data-lang="en">
+              Computer Science and Digital Communication
+            </p>
+            <p data-lang="en">
+              University attendance that shaped my mindset to face with
+              enthusiasm the challenges in this dynamically evolving field
             </p>
             <h4>2010 - 2014</h4>
           </div>
@@ -271,8 +362,10 @@
 
         <div class="box">
           <div class="content">
-            <h3>Ecdl 7 moduli</h3>
-            <p class="certificate">patente europea</p>
+            <h3 data-lang="it">Ecdl 7 moduli</h3>
+            <p class="certificate" data-lang="it">patente europea</p>
+            <h3 data-lang="en">ECDL 7 Modules</h3>
+            <p class="certificate" data-lang="en">European Driving License</p>
             <h4>2009</h4>
           </div>
         </div>
@@ -287,8 +380,19 @@
           </div>
           <div class="content">
             <h3>A. De Viti De Marco</h3>
-            <p class="certificate">Istituto tecnico e commerciale</p>
-            <p>Diploma Ragioniere perito commerciale e programmatore</p>
+            <p class="certificate" data-lang="it">
+              Istituto tecnico e commerciale
+            </p>
+            <p data-lang="it">
+              Diploma Ragioniere perito commerciale e programmatore
+            </p>
+            <p class="certificate" data-lang="en">
+              Technical and Commercial Institute
+            </p>
+            <p data-lang="en">
+              Graduation in Accounting and Commercial Programming
+            </p>
+
             <h4>2003 - 2008</h4>
           </div>
         </div>
@@ -298,11 +402,17 @@
 
     <!-- work project section starts -->
     <section class="work" id="work">
-      <h2 class="heading">
+      <h2 class="heading" data-lang="it">
         <i class="fas fa-laptop-code"></i> Progetti <span>realizzati</span>
       </h2>
-      <p class="quote">
+      <h2 class="heading" data-lang="en">
+        <i class="fas fa-laptop-code"></i> Projects <span>completed</span>
+      </h2>
+      <p class="quote" data-lang="it">
         I progetti narrano la storia <span>di questo lungo percorso</span>
+      </p>
+      <p class="quote" data-lang="en">
+        Projects tell the story <span>of this long journey</span>
       </p>
 
       <div class="box-container">
@@ -325,7 +435,8 @@
 
       <div class="viewall">
         <a href="./projects/" class="btn"
-          ><span> Tutti i progetti</span>
+          ><span data-lang="it"> Tutti i progetti</span>
+          <span data-lang="en"> All Projects</span>
           <i class="fas fa-arrow-right"></i>
         </a>
       </div>
@@ -377,15 +488,25 @@
 
     <!-- experience section starts -->
     <section class="experience" id="experience">
-      <h2 class="heading"><i class="fas fa-briefcase"></i> Esperienze</h2>
-      <p class="quote">
+      <h2 class="heading" data-lang="it">
+        <i class="fas fa-briefcase"></i> Esperienze
+      </h2>
+      <h2 class="heading" data-lang="en">
+        <i class="fas fa-briefcase"></i> Experience
+      </h2>
+      <p class="quote" data-lang="it">
         Ogni sfida è un'opportunità di acquisire nuove competenze e arricchire
         il bagaglio di conoscenze
+      </p>
+      <p class="quote" data-lang="en">
+        Every challenge is an opportunity to acquire new skills and enrich the
+        baggage of knowledge.
       </p>
       <div class="timeline"></div>
       <div class="morebtn">
         <a href="./experience/" class="btn"
-          ><span>Tutte le Esperienze</span>
+          ><span data-lang="it">Tutte le Esperienze</span>
+          <span data-lang="en">All Experience</span>
           <i class="fas fa-arrow-right"></i>
         </a>
       </div>
@@ -396,42 +517,98 @@
     <section class="footer" id="contact">
       <div class="box-container">
         <div class="box">
-          <h3>Portfolio pasquale</h3>
-          <p>
+          <h3 data-lang="it">Portfolio pasquale</h3>
+          <h3 data-lang="en">Portfolio's pasquale</h3>
+          <p data-lang="it">
             Grazie per avere visitato il sito web del mio portfolio personale.
             Connettiti con me sui social. <br />
             <br />
             Puoi anche connetterti 👨‍💻 con me inviando una e-mail 📬
           </p>
+          <p data-lang="en">
+            Thank you for visiting my personal portfolio website. Connect with
+            me on social media. <br />
+            <br />
+            You can also get in touch 👨‍💻 by sending an email 📬
+          </p>
         </div>
 
         <div class="box">
-          <h3>Link veloci</h3>
-          <a href="#home"><i class="fas fa-chevron-circle-right"></i> home</a>
-          <a href="#about"
-            ><i class="fas fa-chevron-circle-right"></i> chi sono</a
-          >
-          <a href="#skills"
-            ><i class="fas fa-chevron-circle-right"></i> abilità</a
-          >
-          <a href="#education"
-            ><i class="fas fa-chevron-circle-right"></i> formazione</a
-          >
-          <a href="#work"
-            ><i class="fas fa-chevron-circle-right"></i> progetti</a
-          >
-          <a href="#experience"
-            ><i class="fas fa-chevron-circle-right"></i> esperienze</a
-          >
+          <h3 data-lang="it">Link veloci</h3>
+          <h3 data-lang="en">Fast Link</h3>
+          <ul>
+            <li>
+              <a href="#home"
+                ><i class="fas fa-chevron-circle-right"></i> home</a
+              >
+            </li>
+            <li data-lang="it">
+              <a href="#about"
+                ><i class="fas fa-chevron-circle-right"></i> chi sono</a
+              >
+            </li>
+            <li data-lang="en">
+              <a href="#about"
+                ><i class="fas fa-chevron-circle-right"></i>About</a
+              >
+            </li>
+            <li data-lang="it">
+              <a href="#skills"
+                ><i class="fas fa-chevron-circle-right"></i> abilità</a
+              >
+            </li>
+            <li data-lang="en">
+              <a href="#skills"
+                ><i class="fas fa-chevron-circle-right"></i> skills</a
+              >
+            </li>
+            <li data-lang="it">
+              <a href="#education"
+                ><i class="fas fa-chevron-circle-right"></i> formazione</a
+              >
+            </li>
+            <li data-lang="en">
+              <a href="#education"
+                ><i class="fas fa-chevron-circle-right"></i> education</a
+              >
+            </li>
+            <li data-lang="it">
+              <a href="#work"
+                ><i class="fas fa-chevron-circle-right"></i> progetti</a
+              >
+            </li>
+            <li data-lang="en">
+              <a href="#work"
+                ><i class="fas fa-chevron-circle-right"></i> projects</a
+              >
+            </li>
+            <li data-lang="it">
+              <a href="#experience"
+                ><i class="fas fa-chevron-circle-right"></i> esperienze</a
+              >
+            </li>
+            <li data-lang="en">
+              <a href="#experience"
+                ><i class="fas fa-chevron-circle-right"></i> experience</a
+              >
+            </li>
+          </ul>
         </div>
 
         <div class="box">
-          <h3>Informazioni di contatto</h3>
+          <h3 data-lang="it">Informazioni di contatto</h3>
+          <h3 data-lang="en">Contact Information</h3>
+
           <p><i class="fas fa-phone"></i>+39 XXX-XXX-XXXX</p>
           <p class="email">
             <i class="fas fa-envelope"></i>pasquale.cicinelli89@gmail.com
           </p>
-          <p><i class="fas fa-map-marked-alt"></i>Bari, Italia-70019</p>
+          <p data-lang="it">
+            <i class="fas fa-map-marked-alt"></i>Bari, Italia-70019
+          </p>
+          <p data-lang="en">
+            <i class="fas fa-map-marked-alt"></i>Bari, Italy-70019
+          </p>
           <div class="share">
             <a
               href="https://www.linkedin.com/in/pasquale-cicinelli-64885b174/"
@@ -478,6 +655,7 @@
     <!-- scroll back to top -->
 
     <!-- ==== ALL MAJOR JAVASCRIPT CDNS STARTS ==== -->
+
     <!-- jquery cdn -->
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"

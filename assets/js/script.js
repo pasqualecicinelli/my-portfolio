@@ -43,23 +43,83 @@ $(document).ready(function () {
 
 document.addEventListener("visibilitychange", function () {
   if (document.visibilityState === "visible") {
+    // if (language === "en") {
+    //   document.title = "Portfolio's | Pasquale Cicinelli";
+    //   $("#favicon").attr("href", "assets/images/favicon.png");
+    // } else {
     document.title = "Portfolio | Pasquale Cicinelli";
     $("#favicon").attr("href", "assets/images/favicon.png");
+    //   }
   } else {
+    //   if (language === "en") {
+    //     document.title = "Come back to Portfolio";
+    //     $("#favicon").attr("href", "assets/images/favhand.png");
+    //   } else {
     document.title = "Torna indietro al Portfolio";
     $("#favicon").attr("href", "assets/images/favhand.png");
   }
+  // }
 });
 
-// <!-- typed js effect starts -->
-var typed = new Typed(".typing-text", {
-  strings: ["frontend development", "backend development", "web development"],
-  loop: true,
-  typeSpeed: 100,
-  backSpeed: 25,
-  backDelay: 500,
-});
+// <!-- typed js effect starts for It and En-->
+function initTyped(selector, strings) {
+  var typed = new Typed(selector, {
+    strings: strings,
+    loop: true,
+    typeSpeed: 100,
+    backSpeed: 25,
+    backDelay: 500,
+  });
+}
 // <!-- typed js effect ends -->
+
+// TOGGLE LANGUAGE IT OR EN
+document
+  .querySelectorAll('[data-lang="en"]')
+  .forEach((element) => (element.style.display = "none"));
+var currentLanguage = "it";
+
+function toggleLanguage() {
+  var elementsIt = document.querySelectorAll('[data-lang="it"]');
+  var elementsEn = document.querySelectorAll('[data-lang="en"]');
+
+  if (currentLanguage === "en") {
+    elementsIt.forEach(function (element) {
+      element.style.display = "none";
+      element.style.opacity = "0";
+    });
+
+    elementsEn.forEach(function (element) {
+      element.style.display = "";
+      element.style.opacity = "1";
+      element.style.transform =
+        "matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)";
+      element.style.transition =
+        "all 0.2s linear 0s, opacity 1s cubic-bezier(0.5, 0, 0, 1) 0.2s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0.2s;";
+    });
+    currentLanguage = "it";
+  } else if (currentLanguage === "it") {
+    elementsEn.forEach(function (element) {
+      element.style.display = "none";
+      element.style.opacity = "0";
+    });
+
+    elementsIt.forEach(function (element) {
+      element.style.display = "";
+      element.style.opacity = "1";
+    });
+
+    currentLanguage = "en";
+  }
+}
+
+document.getElementById("language").addEventListener("click", function (event) {
+  event.preventDefault();
+
+  if (event.target.tagName === "A") {
+    toggleLanguage();
+  }
+});
 
 async function fetchData(type = "skills") {
   let response;
@@ -183,12 +243,19 @@ function showExperience(experience) {
     }
   });
   experienceContainer.innerHTML = experienceHTML;
+
+  /* SCROLL EXPERIENCE */
+  srtop.reveal(".experience .timeline", { delay: 400 });
+  srtop.reveal(".experience .timeline .container", { interval: 400 });
 }
 
 // We have a pre-loader before mounting the page
 document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("loader-container").style.display = "flex";
   fetchData().then((data) => {
+    // Make the call to change the language
+    toggleLanguage();
+
     showSkills(data);
     // Disattiva il pre-loader quando il caricamento è completo
     document.getElementById("loader-container").style.display = "none";
@@ -202,11 +269,26 @@ document.addEventListener("DOMContentLoaded", function () {
     showExperience(data);
   });
 });
+
 // <!-- tilt js effect starts -->
 VanillaTilt.init(document.querySelectorAll(".tilt"), {
   max: 15,
 });
 // <!-- tilt js effect ends -->
+
+// Inizializza Typed.js per la lingua italiana
+initTyped(".typing-text-it", [
+  "frontend development",
+  "backend development",
+  "web development",
+]);
+
+// Inizializza Typed.js per la lingua inglese
+initTyped(".typing-text-en", [
+  "frontend development",
+  "backend development",
+  "web development",
+]);
 
 // pre loader start
 // function loader() {
@@ -262,6 +344,7 @@ srtop.reveal(".home .dev", { interval: 600 });
 srtop.reveal(".about .content h3", { delay: 200 });
 srtop.reveal(".about .content .tag", { delay: 200 });
 srtop.reveal(".about .content p", { delay: 200 });
+// srtop.reveal(".about .content p [data-lang='en']", { delay: 200 });
 srtop.reveal(".about .content .box-container", { delay: 200 });
 srtop.reveal(".about .content .resumebtn", { delay: 200 });
 
@@ -276,5 +359,5 @@ srtop.reveal(".education .box", { interval: 200 });
 // srtop.reveal(".work .box", { interval: 200 });
 
 /* SCROLL EXPERIENCE */
-srtop.reveal(".experience .timeline", { delay: 400 });
-srtop.reveal(".experience .timeline .container", { interval: 400 });
+// srtop.reveal(".experience .timeline", { delay: 400 });
+// srtop.reveal(".experience .timeline .container", { interval: 400 });
