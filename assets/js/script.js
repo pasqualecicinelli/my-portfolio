@@ -201,6 +201,19 @@ document.addEventListener("DOMContentLoaded", function () {
   fetchData("experience").then((data) => {
     showExperience(data);
   });
+
+  // Funzione per inizializzare il widget di Google Translate
+  function initializeGoogleTranslate() {
+    new google.translate.TranslateElement(
+      {
+        pageLanguage: "it",
+        includedLanguages: "en,it",
+        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+      },
+      "google_translate_element"
+    );
+  }
+  initializeGoogleTranslate();
 });
 // <!-- tilt js effect starts -->
 VanillaTilt.init(document.querySelectorAll(".tilt"), {
