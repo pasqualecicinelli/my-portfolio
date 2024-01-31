@@ -214,20 +214,9 @@ header .navbar ul li a:hover {
     color: #fff;
     font-size: 2rem;
   }
-  header #google_translate_element .goog-te-combo {
-    font-size: 2rem !important;
-    color: #fff;
-    background-color: #0e0f31;
-    max-width: 200px;
-  }
   header .navbar ul li a.active,
   header .navbar ul li a:hover {
     padding: 1rem;
-    color: #fff;
-    border-radius: 0.5rem;
-    border-bottom: 0.5rem solid #011aff;
-  }
-  header #google_translate_element .goog-te-combo:hover {
     color: #fff;
     border-radius: 0.5rem;
     border-bottom: 0.5rem solid #011aff;

@@ -83,34 +83,24 @@ function toggleLanguage() {
   var elementsIt = document.querySelectorAll('[data-lang="it"]');
   var elementsEn = document.querySelectorAll('[data-lang="en"]');
 
-  if (currentLanguage === "en") {
-    elementsIt.forEach(function (element) {
-      element.style.display = "none";
-      element.style.opacity = "0";
-    });
+  elementsIt.forEach(function (element) {
+    element.style.display = currentLanguage === "it" ? "" : "none";
+    element.style.opacity = currentLanguage === "it" ? "1" : "0";
+  });
+  elementsEn.forEach(function (element) {
+    element.style.display = currentLanguage === "en" ? "" : "none";
+    element.style.opacity = currentLanguage === "en" ? "1" : "0";
+    element.style.transform =
+      currentLanguage === "en"
+        ? "matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)"
+        : "none";
+    element.style.transition =
+      currentLanguage === "en"
+        ? "all 0.2s linear 0s, opacity 1s cubic-bezier(0.5, 0, 0, 1) 0.2s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0.2s"
+        : "none";
+  });
 
-    elementsEn.forEach(function (element) {
-      element.style.display = "";
-      element.style.opacity = "1";
-      element.style.transform =
-        "matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)";
-      element.style.transition =
-        "all 0.2s linear 0s, opacity 1s cubic-bezier(0.5, 0, 0, 1) 0.2s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0.2s;";
-    });
-    currentLanguage = "it";
-  } else if (currentLanguage === "it") {
-    elementsEn.forEach(function (element) {
-      element.style.display = "none";
-      element.style.opacity = "0";
-    });
-
-    elementsIt.forEach(function (element) {
-      element.style.display = "";
-      element.style.opacity = "1";
-    });
-
-    currentLanguage = "en";
-  }
+  currentLanguage = currentLanguage === "en" ? "it" : "en";
 }
 
 document.getElementById("language").addEventListener("click", function (event) {
@@ -126,7 +116,7 @@ async function fetchData(type = "skills") {
   if (type === "skills") {
     response = await fetch("skills.json");
   } else if (type === "projects") {
-    response = await fetch("./projects/projects.json");
+    response = await fetch("./projects/projects_it.json");
   } else if (type === "experience") {
     response = await fetch("./experience/experience.json");
   }
@@ -165,8 +155,8 @@ function showSkills(skills) {
     },
   });
 }
-
 function showProjects(projects) {
+  // fetchData("projects").then((projects) => {
   let projectsContainer = document.querySelector("#work .box-container");
   let projectHTML = "";
   projects
@@ -215,7 +205,9 @@ function showProjects(projects) {
 
   /* SCROLL PROJECTS */
   srtop.reveal(".work .box", { interval: 200 });
+  // });
 }
+// showProjects(currentLanguage);
 
 function showExperience(experience) {
   let experienceContainer = document.querySelector("#experience .timeline");
