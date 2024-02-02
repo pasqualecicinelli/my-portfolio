@@ -65,12 +65,16 @@
           <li data-lang="it"><a href="#contact">Contatti</a></li>
           <li data-lang="en"><a href="#contact">Contact</a></li>
           <li class="dropdown">
-            <a class="nav-link" href="#"
-              >Language <i class="fas fa-chevron-down"></i
+            <a class="nav-link"
+              ><span data-lang="en">Language</span>
+              <span data-lang="it">Lingua</span>
+              <i class="fas fa-chevron-down"></i
             ></a>
             <ul name="language" id="language">
-              <li data-lang="en"><a href="#">Italiano</a></li>
-              <li data-lang="it"><a href="#">English</a></li>
+              <li>
+                <a data-lang="en">Italiano</a>
+                <a data-lang="it">English</a>
+              </li>
             </ul>
           </li>
         </ul>
@@ -89,10 +93,14 @@
         </h2>
         <h2 data-lang="en">
           Hello,<br />
-          I'm pasquale <br /><span>cicinelli</span>
+          I'm pasquale <span>cicinelli</span>
         </h2>
-        <p data-lang="it">mi occupo di <span class="typing-text-it"></span></p>
-        <p data-lang="en">I am into <span class="typing-text-en"></span></p>
+        <p>
+          <span data-lang="it">mi occupo di </span>
+          <span data-lang="en">I am into </span>
+          <span class="typing-text"></span>
+        </p>
+        <!-- <p data-lang="en">I am into <span class="typing-text-en"></span></p> -->
         <a href="#about" class="btn"
           ><span data-lang="it">Chi sono?</span>
           <span data-lang="en">Who am I?</span>
@@ -134,26 +142,27 @@
 
     <!-- about section starts -->
     <section class="about" id="about">
-      <h2 class="heading" data-lang="it">
-        <i class="fas fa-user-alt"></i> Chi <span>sono?</span>
+      <h2 class="heading">
+        <i class="fas fa-user-alt"></i
+        ><span data-lang="it"> Chi <span>sono?</span></span
+        ><span data-lang="en"> Who <span>am I?</span></span>
       </h2>
-      <p class="quote" data-lang="it">
-        Per conoscere veramente una persona, non limitatevi ad ascoltare le sue
-        parole, ma osservate con attenzione le sue azioni.
-        <span>
-          È nell'operare che si manifesta la vera essenza di un individuo</span
+      <p class="quote">
+        <span data-lang="it"
+          >Per conoscere veramente una persona, non limitatevi ad ascoltare le
+          sue parole, ma osservate con attenzione le sue azioni.
+          <span>
+            È nell'operare che si manifesta la vera essenza di un
+            individuo</span
+          ></span
         >
-      </p>
-      <h2 class="heading" data-lang="en">
-        <i class="fas fa-user-alt"></i> Who <span>am I?</span>
-      </h2>
-
-      <p class="quote" data-lang="en">
-        To truly know a person, don't just listen to their words, but observe
-        their actions carefully.
-        <span>
-          It is in their actions that the true essence of an individual is
-          revealed</span
+        <span data-lang="en">
+          To truly know a person, don't just listen to their words, but observe
+          their actions carefully.
+          <span>
+            It is in their actions that the true essence of an individual is
+            revealed</span
+          ></span
         >
       </p>
 
@@ -167,21 +176,25 @@
           />
         </div>
         <div class="content">
-          <h3 data-lang="it">Sono pasquale</h3>
-          <h3 data-lang="en">I am Pasquale</h3>
+          <h3>
+            <span data-lang="it">Sono pasquale</span>
+            <span data-lang="en">I am Pasquale</span>
+          </h3>
           <span class="tag">Junior Full Stack Web Developer</span>
 
-          <p data-lang="it">
-            Inseguo gli obiettivi con l'entusiasmo di sempre, impegnandomi
-            costantemente nella crescita personale e professionale. Sviluppatore
-            web appassionato, cerco continuamente nuove sfide per affinare le
-            mie competenze e creare soluzioni innovative.
-          </p>
-          <p data-lang="en">
-            I pursue goals with the same enthusiasm, constantly engaging in
-            personal and professional growth. A passionate web developer, I
-            continually seek new challenges to refine my skills and create
-            innovative solutions.
+          <p>
+            <span data-lang="it"
+              >Inseguo gli obiettivi con l'entusiasmo di sempre, impegnandomi
+              costantemente nella crescita personale e professionale.
+              Sviluppatore web appassionato, cerco continuamente nuove sfide per
+              affinare le mie competenze e creare soluzioni innovative.</span
+            >
+            <span data-lang="en"
+              >I pursue goals with the same enthusiasm, constantly engaging in
+              personal and professional growth. A passionate web developer, I
+              continually seek new challenges to refine my skills and create
+              innovative solutions.</span
+            >
           </p>
 
           <div class="box-container">

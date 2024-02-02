@@ -28,49 +28,45 @@ $(document).ready(function () {
     });
   });
 
-  // // smooth scrolling
-  // $('a[href*="#"]').on("click", function (e) {
-  //   e.preventDefault();
-  //   $("html, body").animate(
-  //     {
-  //       scrollTop: $($(this).attr("href")).offset().top,
-  //     },
-  //     500,
-  //     "linear"
-  //   );
-  // });
+  // smooth scrolling
+  $('a[href*="#"]').on("click", function (e) {
+    e.preventDefault();
+    $("html, body").animate(
+      {
+        scrollTop: $($(this).attr("href")).offset().top,
+      },
+      500,
+      "linear"
+    );
+  });
+
+  //Opens the language drop-down menu by clicking
+  $(".dropdown").click(function () {
+    $(this).toggleClass("open");
+    $("#language").toggle(); // Toggle the display property
+  });
 });
 
+// Set if is visible or not
 document.addEventListener("visibilitychange", function () {
-  if (document.visibilityState === "visible") {
-    // if (language === "en") {
-    //   document.title = "Portfolio's | Pasquale Cicinelli";
-    //   $("#favicon").attr("href", "assets/images/favicon.png");
-    // } else {
-    document.title = "Portfolio | Pasquale Cicinelli";
-    $("#favicon").attr("href", "assets/images/favicon.png");
-    //   }
-  } else {
-    //   if (language === "en") {
-    //     document.title = "Come back to Portfolio";
-    //     $("#favicon").attr("href", "assets/images/favhand.png");
-    //   } else {
-    document.title = "Torna indietro al Portfolio";
-    $("#favicon").attr("href", "assets/images/favhand.png");
-  }
-  // }
+  document.visibilityState === "visible"
+    ? (document.title = "Portfolio | Pasquale Cicinelli")
+    : (document.title = "Torna indietro al Portfolio");
+
+  document.visibilityState === "visible"
+    ? $("#favicon").attr("href", "assets/images/favicon.png")
+    : $("#favicon").attr("href", "assets/images/favhand.png");
 });
 
 // <!-- typed js effect starts for It and En-->
-function initTyped(selector, strings) {
-  var typed = new Typed(selector, {
-    strings: strings,
-    loop: true,
-    typeSpeed: 100,
-    backSpeed: 25,
-    backDelay: 500,
-  });
-}
+var typed = new Typed(".typing-text", {
+  strings: ["frontend development", "backend development", "web development"],
+  loop: true,
+  typeSpeed: 100,
+  backSpeed: 25,
+  backDelay: 500,
+});
+
 // <!-- typed js effect ends -->
 
 // TOGGLE LANGUAGE IT OR EN
@@ -78,6 +74,10 @@ document
   .querySelectorAll('[data-lang="en"]')
   .forEach((element) => (element.style.display = "none"));
 var currentLanguage = "it";
+
+function setCurrentLanguage(lang) {
+  currentLanguage = lang;
+}
 
 function toggleLanguage() {
   var elementsIt = document.querySelectorAll('[data-lang="it"]');
@@ -90,24 +90,15 @@ function toggleLanguage() {
   elementsEn.forEach(function (element) {
     element.style.display = currentLanguage === "en" ? "" : "none";
     element.style.opacity = currentLanguage === "en" ? "1" : "0";
-    element.style.transform =
-      currentLanguage === "en"
-        ? "matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)"
-        : "none";
-    element.style.transition =
-      currentLanguage === "en"
-        ? "all 0.2s linear 0s, opacity 1s cubic-bezier(0.5, 0, 0, 1) 0.2s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0.2s"
-        : "none";
   });
-
-  currentLanguage = currentLanguage === "en" ? "it" : "en";
+  setCurrentLanguage(currentLanguage === "en" ? "it" : "en");
 }
-
 document.getElementById("language").addEventListener("click", function (event) {
   event.preventDefault();
 
   if (event.target.tagName === "A") {
     toggleLanguage();
+    showProjects(currentLanguage === "en" ? "it" : "en");
   }
 });
 
@@ -116,7 +107,7 @@ async function fetchData(type = "skills") {
   if (type === "skills") {
     response = await fetch("skills.json");
   } else if (type === "projects") {
-    response = await fetch("./projects/projects_it.json");
+    response = await fetch("./projects/projects.json");
   } else if (type === "experience") {
     response = await fetch("./experience/experience.json");
   }
@@ -155,7 +146,8 @@ function showSkills(skills) {
     },
   });
 }
-function showProjects(projects) {
+
+function showProjects(currentLanguage) {
   // fetchData("projects").then((projects) => {
   let projectsContainer = document.querySelector("#work .box-container");
   let projectHTML = "";
@@ -173,7 +165,7 @@ function showProjects(projects) {
         <h3>${project.name}</h3>
         </div>
         <div class="desc">
-          <p>${project.desc}</p>
+          <p>${project.desc[currentLanguage]}</p>
           <div class="btns">
             <a href="${project.links.view}" class="btn ${
         project.links.view ? "" : "disabled"
@@ -207,7 +199,6 @@ function showProjects(projects) {
   srtop.reveal(".work .box", { interval: 200 });
   // });
 }
-// showProjects(currentLanguage);
 
 function showExperience(experience) {
   let experienceContainer = document.querySelector("#experience .timeline");
@@ -246,20 +237,34 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("loader-container").style.display = "flex";
   fetchData().then((data) => {
     // Make the call to change the language
-    toggleLanguage();
+    // toggleLanguage();
 
     showSkills(data);
     // Disattiva il pre-loader quando il caricamento è completo
     document.getElementById("loader-container").style.display = "none";
   });
 
-  fetchData("projects").then((data) => {
-    showProjects(data);
-  });
+  // fetchData("projects").then((data) => {
+  //   showProjects(data);
+  // });
 
   fetchData("experience").then((data) => {
     showExperience(data);
   });
+});
+
+document.addEventListener("DOMContentLoaded", async function () {
+  document.getElementById("loader-container").style.display = "flex";
+
+  // Richiedi i dati dei progetti e memorizzali in projectsData
+  projects = await fetchData("projects");
+
+  // Cambia la lingua e mostra i progetti
+  toggleLanguage();
+  showProjects("it");
+
+  // Disattiva il pre-loader quando il caricamento è completo
+  // document.getElementById("loader-container").style.display = "none";
 });
 
 // <!-- tilt js effect starts -->
@@ -267,20 +272,6 @@ VanillaTilt.init(document.querySelectorAll(".tilt"), {
   max: 15,
 });
 // <!-- tilt js effect ends -->
-
-// Inizializza Typed.js per la lingua italiana
-initTyped(".typing-text-it", [
-  "frontend development",
-  "backend development",
-  "web development",
-]);
-
-// Inizializza Typed.js per la lingua inglese
-initTyped(".typing-text-en", [
-  "frontend development",
-  "backend development",
-  "web development",
-]);
 
 // pre loader start
 // function loader() {
