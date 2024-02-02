@@ -99,6 +99,7 @@ document.getElementById("language").addEventListener("click", function (event) {
   if (event.target.tagName === "A") {
     toggleLanguage();
     showProjects(currentLanguage === "en" ? "it" : "en");
+    showExperience(currentLanguage === "en" ? "it" : "en");
   }
 });
 
@@ -200,7 +201,7 @@ function showProjects(currentLanguage) {
   // });
 }
 
-function showExperience(experience) {
+function showExperience(currentLanguage) {
   let experienceContainer = document.querySelector("#experience .timeline");
   let experienceHTML = "";
   let isRight = true;
@@ -215,9 +216,17 @@ function showExperience(experience) {
     <h2>${experience.company}</h2>
     </div>
     <div class="desc">
-      <h3>${experience.type}</h3>
-      <p>${experience.desc}</p>
-       <span> ${experience.place} ${experience.data}</span>
+      <h3>${
+        experience.type
+          ? experience.type[currentLanguage] || experience.type
+          : ""
+      }</h3>
+      <p>${experience.desc[currentLanguage]}</p>
+       <span> ${experience.place} ${
+        experience.data
+          ? experience.data[currentLanguage] || experience.data
+          : ""
+      }</span>
       </div>
   </div>
 </div>
@@ -241,16 +250,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     showSkills(data);
     // Disattiva il pre-loader quando il caricamento è completo
-    document.getElementById("loader-container").style.display = "none";
+    // document.getElementById("loader-container").style.display = "none";
   });
 
   // fetchData("projects").then((data) => {
   //   showProjects(data);
   // });
 
-  fetchData("experience").then((data) => {
-    showExperience(data);
-  });
+  // fetchData("experience").then((data) => {
+  //   showExperience(data);
+  // });
 });
 
 document.addEventListener("DOMContentLoaded", async function () {
@@ -263,8 +272,11 @@ document.addEventListener("DOMContentLoaded", async function () {
   toggleLanguage();
   showProjects("it");
 
+  experience = await fetchData("experience");
+  showExperience("it");
+
   // Disattiva il pre-loader quando il caricamento è completo
-  // document.getElementById("loader-container").style.display = "none";
+  document.getElementById("loader-container").style.display = "none";
 });
 
 // <!-- tilt js effect starts -->
