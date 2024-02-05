@@ -14,6 +14,12 @@ $(document).ready(function () {
       document.querySelector("#scroll-top").classList.remove("active");
     }
   });
+
+  //Opens the language drop-down menu by clicking
+  $(".dropdown").click(function () {
+    $(this).toggleClass("open");
+    $("#language").toggle(); // Toggle the display property
+  });
 });
 
 // Change favicon
@@ -27,18 +33,49 @@ document.addEventListener("visibilitychange", function () {
   }
 });
 
+// TOGGLE LANGUAGE IT OR EN
+document
+  .querySelectorAll('[data-lang="en"]')
+  .forEach((element) => (element.style.display = "none"));
+var currentLanguage = "it";
+
+function setCurrentLanguage(lang) {
+  currentLanguage = lang;
+}
+
+function toggleLanguage() {
+  var elementsIt = document.querySelectorAll('[data-lang="it"]');
+  var elementsEn = document.querySelectorAll('[data-lang="en"]');
+
+  elementsIt.forEach(function (element) {
+    element.style.display = currentLanguage === "it" ? "" : "none";
+    element.style.opacity = currentLanguage === "it" ? "1" : "0";
+  });
+  elementsEn.forEach(function (element) {
+    element.style.display = currentLanguage === "en" ? "" : "none";
+    element.style.opacity = currentLanguage === "en" ? "1" : "0";
+  });
+  setCurrentLanguage(currentLanguage === "en" ? "it" : "en");
+}
+document.getElementById("language").addEventListener("click", function (event) {
+  event.preventDefault();
+
+  if (event.target.tagName === "A") {
+    toggleLanguage();
+    showProjects(currentLanguage === "en" ? "it" : "en");
+  }
+});
+
 // fetch projects start
-function getProjects() {
-  return fetch("projects.json")
-    .then((response) => response.json())
-    .then((data) => {
-      return data;
-    });
+async function getProjects() {
+  const response = await fetch("projects.json");
+  const data = await response.json();
+  return data;
 }
 
 // Create the document in html
-function showProjects(projects) {
-  let projectsContainer = document.querySelector(".work .box-container");
+function showProjects(currentLanguage) {
+  let projectsContainer = document.querySelector("#work .box-container");
   let projectsHTML = "";
   projects.forEach((project) => {
     projectsHTML += `
@@ -51,7 +88,7 @@ function showProjects(projects) {
         <h3>${project.name}</h3>
         </div>
         <div class="desc">
-          <p>${project.desc}</p>
+          <p>${project.desc[currentLanguage]}</p>
           <div class="btns">
             <a href="${project.links.view}" class="btn ${
       project.links.view ? "" : "disabled"
@@ -86,35 +123,20 @@ function showProjects(projects) {
   /* SCROLL PROJECTS */
   srtop.reveal(".work .box", { delay: 400 });
   srtop.reveal(".work .box", { interval: 200 });
-
-  // isotope filter products
-  var $grid = $(".box-container").isotope({
-    itemSelector: ".grid-item",
-    layoutMode: "fitRows",
-    masonry: {
-      columnWidth: 200,
-    },
-  });
-
-  // filter items on button click
-  $(".button-group").on("click", "button", function () {
-    $(".button-group").find(".is-checked").removeClass("is-checked");
-    $(this).addClass("is-checked");
-    var filterValue = $(this).attr("data-filter");
-    $grid.isotope({ filter: filterValue });
-  });
 }
 
 // We have a pre-loader before mounting the page
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
   document.getElementById("loader-container").style.display = "flex";
 
-  getProjects().then((data) => {
-    showProjects(data);
-    // Disattiva il pre-loader quando il caricamento è completo
-    document.getElementById("loader-container").style.display = "none";
-  });
+  projects = await getProjects("projects");
+  toggleLanguage();
+  showProjects("it");
+
+  // Disattiva il pre-loader quando il caricamento è completo
+  document.getElementById("loader-container").style.display = "none";
 });
+// });
 // fetch projects end
 
 // disable developer mode
@@ -135,3 +157,24 @@ document.onkeydown = function (e) {
     return false;
   }
 };
+// Filter projects
+document.querySelector("#filters").addEventListener("click", function (event) {
+  if (event.target.tagName === "BUTTON") {
+    const filterValue = event.target.getAttribute("data-filter");
+    filterProjects(filterValue);
+  }
+});
+
+function filterProjects(filterValue) {
+  const gridItems = document.querySelectorAll(".grid-item");
+  gridItems.forEach((item) => {
+    if (
+      filterValue === "*" ||
+      item.classList.contains(filterValue.replace(".", ""))
+    ) {
+      item.style.display = "block";
+    } else {
+      item.style.display = "none";
+    }
+  });
+}
