@@ -248,6 +248,17 @@ header .navbar ul li a:hover {
 .work .heading span {
   color: rgb(255, 230, 0);
 }
+.work .quote {
+  color: #fff;
+  font-size: 1.5rem;
+  text-align: center;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  margin: 0.5rem 0;
+}
+.work .quote span {
+  color: rgb(255, 230, 0);
+}
 .work .button-group {
   display: flex;
   flex-wrap: wrap;
@@ -357,7 +368,7 @@ header .navbar ul li a:hover {
   background: #310ae0f5;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 576px) {
   .work .box-container {
     display: flex;
     flex-direction: column;
@@ -390,6 +401,7 @@ header .navbar ul li a:hover {
   color: #2506ad;
   box-shadow: 0px 2px 4px rgba(48, 68, 247, 0.3);
   text-align: center;
+  border: 1px solid transparent;
 }
 .backbtn .btn span {
   font-weight: 600;
