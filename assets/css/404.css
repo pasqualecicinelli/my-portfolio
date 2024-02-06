@@ -48,14 +48,14 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.7rem 10%;
+  padding: 1.7rem 8%;
   height: 6.5rem;
   background-color: #fff;
   box-shadow: 0 1px 4px rgba(146, 161, 176, 0.3);
 }
 section {
   min-height: 100vh;
-  padding: 2rem 9%;
+  padding: 2rem 8%;
 }
 header > .fav {
   height: 50px;
@@ -98,10 +98,43 @@ header .navbar ul {
   list-style: none;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 header .navbar li {
-  margin-left: 2rem;
+  margin-left: 1.25rem;
+}
+/* Dropdown list style */
+header .navbar .dropdown {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+header .navbar .dropdown > a {
+  padding-bottom: 10px;
+  text-decoration: none;
+  color: #333;
+}
+header .navbar .dropdown #language {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  list-style: none;
+  margin-top: 7px;
+  padding: 0;
+}
+header .navbar .dropdown #language li {
+  /* display: block; */
+  padding: 10px;
+  cursor: pointer;
+  margin-left: 0 !important;
+}
+#language {
+  display: none;
+}
+.dropdown.open #language {
+  display: block;
 }
 header .navbar ul li a {
   font-size: 1.57rem;
@@ -134,7 +167,7 @@ header .navbar ul li a:hover {
     position: fixed;
     top: 6.5rem;
     right: -120%;
-    width: 75%;
+    width: 50%;
     height: 100%;
     text-align: left;
     align-items: flex-start;
@@ -149,11 +182,26 @@ header .navbar ul li a:hover {
     width: 100%;
     margin: 1rem 0;
     border-radius: 0.5rem;
-    width: 26rem;
+    width: 15rem;
   }
   header .navbar ul li a {
-    display: block;
     padding: 1rem;
+    color: #fff;
+    font-size: 2rem;
+  }
+  header .navbar .dropdown #language {
+    background-color: transparent;
+    margin: 0;
+  }
+  header .navbar .dropdown #language li {
+    padding: 0;
+    padding-top: 10px;
+  }
+  header .navbar .dropdown:hover {
+    display: block;
+  }
+  .dropdown a span,
+  .dropdown a i.fas {
     text-align: left;
     color: #fff;
     font-size: 2rem;
@@ -222,6 +270,7 @@ header .navbar ul li a:hover {
   background: #2506ad;
   box-shadow: 0px 5px 10px rgba(48, 68, 247, 0.6);
   text-align: center;
+  border: 1px solid transparent;
 }
 .backbtn .btn span {
   font-weight: 600;
@@ -347,7 +396,7 @@ header .navbar ul li a:hover {
 /* footer section ends */
 
 /* common media queries starts*/
-@media (max-width: 450px) {
+@media (max-width: 576px) {
   html {
     font-size: 55%;
   }

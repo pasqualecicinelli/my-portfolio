@@ -38,12 +38,31 @@
       <nav class="navbar">
         <ul>
           <li><a class="active" href="./#home">Home</a></li>
-          <li><a href="./#about">Chi sono</a></li>
-          <li><a href="./#skills">Abilità</a></li>
-          <li><a href="./#education">Formazione</a></li>
-          <li><a href="./#work">Progetti</a></li>
-          <li><a href="./#experience">Esperienze</a></li>
-          <li><a href="./#contact">Contatti</a></li>
+          <li data-lang="it"><a href="./#about">Chi sono</a></li>
+          <li data-lang="en"><a href="./#about">About</a></li>
+          <li data-lang="it"><a href="./#skills">Abilità</a></li>
+          <li data-lang="en"><a href="./#skills">Skills</a></li>
+          <li data-lang="it"><a href="./#education">Formazione</a></li>
+          <li data-lang="en"><a href="./#education">Education</a></li>
+          <li data-lang="it"><a href="./#work">Progetti</a></li>
+          <li data-lang="en"><a href="./#work">Projects</a></li>
+          <li data-lang="it"><a href="./#experience">Esperienze</a></li>
+          <li data-lang="en"><a href="./#experience">Experience</a></li>
+          <li data-lang="it"><a href="./#contact">Contatti</a></li>
+          <li data-lang="en"><a href="./#contact">Contact</a></li>
+          <li class="dropdown">
+            <a class="nav-link"
+              ><span data-lang="en">Language</span>
+              <span data-lang="it">Lingua</span>
+              <i class="fas fa-chevron-down"></i
+            ></a>
+            <ul name="language" id="language">
+              <li>
+                <a data-lang="en">Italiano</a>
+                <a data-lang="it">English</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
     </header>
@@ -57,13 +76,16 @@
         </div>
 
         <div class="msg">
-          <h3>Sembra che tu sia perso</h3>
-          <p>La pagina che stai cercando non è disponibile!</p>
+          <h3 data-lang="it">Sembra che tu ti sia perso</h3>
+          <h3 data-lang="en">It seems like you're lost</h3>
+          <p data-lang="it">La pagina che stai cercando non è disponibile!</p>
+          <p data-lang="en">The page you are looking for is not available!</p>
 
           <div class="backbtn">
             <a href="../" class="btn">
               <i class="fas fa-arrow-left"></i>
-              <span>Torna alla Home</span>
+              <span data-lang="it">Torna alla Home</span>
+              <span data-lang="en">Back Home</span>
             </a>
           </div>
         </div>
@@ -75,42 +97,98 @@
     <section class="footer" id="contact">
       <div class="box-container">
         <div class="box">
-          <h3>Portfolio pasquale</h3>
-          <p>
+          <h3 data-lang="it">Portfolio pasquale</h3>
+          <h3 data-lang="en">pasquale's portfolio</h3>
+          <p data-lang="it">
             Grazie per avere visitato il sito web del mio portfolio personale.
             Connettiti con me sui social. <br />
             <br />
             Puoi anche connetterti 👨‍💻 con me inviando una e-mail 📬
           </p>
+          <p data-lang="en">
+            Thank you for visiting my personal portfolio website. Connect with
+            me on social media. <br />
+            <br />
+            You can also get in touch 👨‍💻 by sending an email 📬
+          </p>
         </div>
 
         <div class="box">
-          <h3>Link veloci</h3>
-          <a href="./#home"><i class="fas fa-chevron-circle-right"></i> home</a>
-          <a href="./#about"
-            ><i class="fas fa-chevron-circle-right"></i> chi sono</a
-          >
-          <a href="./#skills"
-            ><i class="fas fa-chevron-circle-right"></i> abilità</a
-          >
-          <a href="./#education"
-            ><i class="fas fa-chevron-circle-right"></i> formazione</a
-          >
-          <a href="./#work"
-            ><i class="fas fa-chevron-circle-right"></i> progetti</a
-          >
-          <a href="./#experience"
-            ><i class="fas fa-chevron-circle-right"></i> esperienze</a
-          >
+          <h3 data-lang="it">Link veloci</h3>
+          <h3 data-lang="en">Fast Link</h3>
+          <ul>
+            <li>
+              <a href="./#home"
+                ><i class="fas fa-chevron-circle-right"></i> home</a
+              >
+            </li>
+            <li data-lang="it">
+              <a href="./#about"
+                ><i class="fas fa-chevron-circle-right"></i> chi sono</a
+              >
+            </li>
+            <li data-lang="en">
+              <a href="./#about"
+                ><i class="fas fa-chevron-circle-right"></i>About</a
+              >
+            </li>
+            <li data-lang="it">
+              <a href="./#skills"
+                ><i class="fas fa-chevron-circle-right"></i> abilità</a
+              >
+            </li>
+            <li data-lang="en">
+              <a href="./#skills"
+                ><i class="fas fa-chevron-circle-right"></i> skills</a
+              >
+            </li>
+            <li data-lang="it">
+              <a href="#./education"
+                ><i class="fas fa-chevron-circle-right"></i> formazione</a
+              >
+            </li>
+            <li data-lang="en">
+              <a href="./#education"
+                ><i class="fas fa-chevron-circle-right"></i> education</a
+              >
+            </li>
+            <li data-lang="it">
+              <a href="./#work"
+                ><i class="fas fa-chevron-circle-right"></i> progetti</a
+              >
+            </li>
+            <li data-lang="en">
+              <a href="./#work"
+                ><i class="fas fa-chevron-circle-right"></i> projects</a
+              >
+            </li>
+            <li data-lang="it">
+              <a href="./#experience"
+                ><i class="fas fa-chevron-circle-right"></i> esperienze</a
+              >
+            </li>
+            <li data-lang="en">
+              <a href="./#experience"
+                ><i class="fas fa-chevron-circle-right"></i> experience</a
+              >
+            </li>
+          </ul>
         </div>
 
         <div class="box">
-          <h3>Informazioni di contatto</h3>
+          <h3 data-lang="it">Informazioni di contatto</h3>
+          <h3 data-lang="en">Contact Information</h3>
+
           <p><i class="fas fa-phone"></i>+39 XXX-XXX-XXXX</p>
           <p class="email">
             <i class="fas fa-envelope"></i>pasquale.cicinelli89@gmail.com
           </p>
-          <p><i class="fas fa-map-marked-alt"></i>Bari, Italia-70019</p>
+          <p data-lang="it">
+            <i class="fas fa-map-marked-alt"></i>Bari, Italia-70019
+          </p>
+          <p data-lang="en">
+            <i class="fas fa-map-marked-alt"></i>Bari, Italy-70019
+          </p>
           <div class="share">
             <a
               href="https://www.linkedin.com/in/pasquale-cicinelli-64885b174/"
