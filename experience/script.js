@@ -76,7 +76,7 @@ function showExperience(currentLanguage) {
   let experienceHTML = "";
   let isRight = true;
 
-  experience.forEach((experience) => {
+  allExperience.forEach((experience) => {
     experienceHTML += `
     <div class="container ${isRight ? "right" : "left"}">
   <div class="content">
@@ -89,7 +89,11 @@ function showExperience(currentLanguage) {
           ? experience.type[currentLanguage] || experience.type
           : ""
       }</h3>
-      <p>${experience.desc[currentLanguage]}</p>
+      <p>${
+        experience.desc
+          ? experience.desc[currentLanguage] || experience.desc
+          : ""
+      }</p>
        <span> ${experience.place} ${
       experience.data ? experience.data[currentLanguage] || experience.data : ""
     }</span>
@@ -118,7 +122,7 @@ function showExperience(currentLanguage) {
 document.addEventListener("DOMContentLoaded", async function () {
   document.getElementById("loader-container").style.display = "flex";
 
-  experience = await getExperience("experience");
+  allExperience = await getExperience("experience");
   toggleLanguage();
   showExperience("it");
   // getExperience().then((data) => {
