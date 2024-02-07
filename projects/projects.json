@@ -76,5 +76,31 @@
       "view": "https://lyricsmus-jazz.netlify.app/",
       "code": "https://github.com/pasqualecicinelli/proj-html-vuejs"
     }
+  },
+  {
+    "name": "Deliveboo Front-end",
+    "desc": {
+      "it": "Il frontend di Deliveboo permette ai clienti di esplorare, ordinare e pagare piatti da un unico ristorante. Realizzato con Vue.js e Braintree",
+      "en": "Deliveboo's frontend allows customers to easily browse, order, and pay for dishes from a single restaurant. Built with Vue.js and Braintree."
+    },
+    "image": "Deliveboo-frontend",
+    "category": "front-end",
+    "links": {
+      "view": "",
+      "code": "https://github.com/pasqualecicinelli/deliveboo-front-office"
+    }
+  },
+  {
+    "name": "Deliveboo Back-end",
+    "desc": {
+      "it": "Deliveboo per ristoratori offre gestione del menu, visibilità personalizzata dei piatti e controllo degli ordini, ottimizzato con tecnologie moderne",
+      "en": "Deliveboo for restaurateurs provides menu management, personalized dish visibility, and order control, optimized with modern technologies"
+    },
+    "image": "Deliveboo-backend",
+    "category": "back-end",
+    "links": {
+      "view": "",
+      "code": "https://github.com/pasqualecicinelli/deliveboo-back-office"
+    }
   }
 ]
