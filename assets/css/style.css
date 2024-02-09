@@ -423,6 +423,21 @@ header .navbar ul li a:hover {
 .about {
   background: rgb(255, 255, 255);
 }
+.about .heading span.rotate-y {
+  transform-style: preserve-3d;
+  animation-name: rotation-y;
+  animation-duration: 5s;
+  animation-iteration-count: 3;
+  display: inline-block;
+}
+@keyframes rotation-y {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
 .about .quote {
   width: 67%;
   font-size: 1.5rem;
@@ -561,6 +576,24 @@ header .navbar ul li a:hover {
 }
 .skills .heading span {
   color: rgb(255, 230, 0);
+}
+.skills .heading i {
+  animation-name: rotate;
+  animation-duration: 3s;
+  animation-iteration-count: 3;
+}
+@keyframes rotate {
+  0% {
+    margin-right: 100px;
+    transform: rotate(0);
+  }
+  90% {
+    transform: rotate(360deg);
+    margin-left: 150px;
+  }
+  100% {
+    transform: rotate(0);
+  }
 }
 .skills .quote {
   width: 60%;

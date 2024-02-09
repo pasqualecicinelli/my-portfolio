@@ -149,7 +149,6 @@ function showSkills(skills) {
 }
 
 function showProjects(currentLanguage) {
-  // fetchData("projects").then((projects) => {
   let projectsContainer = document.querySelector("#work .box-container");
   let projectHTML = "";
   projects
@@ -207,7 +206,6 @@ function showExperience(currentLanguage) {
   let isRight = true;
 
   experience.forEach((experience) => {
-    // .slice(0, 4)
     if (experience.show) {
       experienceHTML += `
     <div class="container ${isRight ? "right" : "left"}">
@@ -242,30 +240,10 @@ function showExperience(currentLanguage) {
 }
 
 // We have a pre-loader before mounting the page
-document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById("loader-container").style.display = "flex";
-  fetchData().then((data) => {
-    // Make the call to change the language
-    // toggleLanguage();
-
-    showSkills(data);
-    // Disattiva il pre-loader quando il caricamento è completo
-    // document.getElementById("loader-container").style.display = "none";
-  });
-
-  // fetchData("projects").then((data) => {
-  //   showProjects(data);
-  // });
-
-  // fetchData("experience").then((data) => {
-  //   showExperience(data);
-  // });
-});
-
 document.addEventListener("DOMContentLoaded", async function () {
   document.getElementById("loader-container").style.display = "flex";
 
-  // Richiedi i dati dei progetti e memorizzali in projectsData
+  // Richiedi i dati dei progetti e memorizzali in projects
   projects = await fetchData("projects");
 
   // Cambia la lingua e mostra i progetti
@@ -274,6 +252,9 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   experience = await fetchData("experience");
   showExperience("it");
+
+  skills = await fetchData("skills");
+  showSkills(skills);
 
   // Disattiva il pre-loader quando il caricamento è completo
   document.getElementById("loader-container").style.display = "none";
