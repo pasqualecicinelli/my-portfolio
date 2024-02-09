@@ -69,39 +69,43 @@ var typed = new Typed(".typing-text", {
 
 // <!-- typed js effect ends -->
 
-// TOGGLE LANGUAGE IT OR EN
+// Start language IT
 document
   .querySelectorAll('[data-lang="en"]')
   .forEach((element) => (element.style.display = "none"));
-var currentLanguage = "it";
-
-function setCurrentLanguage(lang) {
-  currentLanguage = lang;
-}
-
-function toggleLanguage() {
-  var elementsIt = document.querySelectorAll('[data-lang="it"]');
-  var elementsEn = document.querySelectorAll('[data-lang="en"]');
-
-  elementsIt.forEach(function (element) {
-    element.style.display = currentLanguage === "it" ? "" : "none";
-    element.style.opacity = currentLanguage === "it" ? "1" : "0";
-  });
-  elementsEn.forEach(function (element) {
-    element.style.display = currentLanguage === "en" ? "" : "none";
-    element.style.opacity = currentLanguage === "en" ? "1" : "0";
-  });
-  setCurrentLanguage(currentLanguage === "en" ? "it" : "en");
-}
-document.getElementById("language").addEventListener("click", function (event) {
-  event.preventDefault();
-
+document.querySelector("#language").addEventListener("click", function (event) {
   if (event.target.tagName === "A") {
-    toggleLanguage();
-    showProjects(currentLanguage === "en" ? "it" : "en");
-    showExperience(currentLanguage === "en" ? "it" : "en");
+    const filterValue = event.target.getAttribute("data-filter");
+    filterLang(filterValue);
   }
 });
+
+// Filter language
+function filterLang(filterValue) {
+  var elementsIt = document.querySelectorAll('[data-lang="it"]');
+  var elementsEn = document.querySelectorAll('[data-lang="en"]');
+  if (filterValue === "it") {
+    elementsIt.forEach(function (element) {
+      element.style.display = "";
+      element.style.opacity = 1;
+    });
+    elementsEn.forEach(function (element) {
+      element.style.display = "none";
+      element.style.opacity = 0;
+    });
+  } else if (filterValue === "en") {
+    elementsIt.forEach(function (element) {
+      element.style.display = "none";
+      element.style.opacity = 0;
+    });
+    elementsEn.forEach(function (element) {
+      element.style.display = "";
+      element.style.opacity = 1;
+    });
+  }
+  showProjects(filterValue);
+  showExperience(filterValue);
+}
 
 async function fetchData(type = "skills") {
   let response;
@@ -138,7 +142,6 @@ function showSkills(skills) {
     reset: true,
   });
   /* SCROLL SKILLS */
-  // srtop.reveal(".skills .container", { interval: 200 });
   srtop.reveal(".skills .container .bar", {
     interval: 150,
     beforeReveal: (domEl) => {
@@ -243,11 +246,9 @@ function showExperience(currentLanguage) {
 document.addEventListener("DOMContentLoaded", async function () {
   document.getElementById("loader-container").style.display = "flex";
 
-  // Richiedi i dati dei progetti e memorizzali in projects
+  // Request project data and store it in projects
   projects = await fetchData("projects");
 
-  // Cambia la lingua e mostra i progetti
-  toggleLanguage();
   showProjects("it");
 
   experience = await fetchData("experience");
@@ -256,7 +257,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   skills = await fetchData("skills");
   showSkills(skills);
 
-  // Disattiva il pre-loader quando il caricamento è completo
+  // Disable the pre-loader when loading is complete
   document.getElementById("loader-container").style.display = "none";
 });
 
@@ -320,7 +321,6 @@ srtop.reveal(".home .dev", { interval: 600 });
 srtop.reveal(".about .content h3", { delay: 200 });
 srtop.reveal(".about .content .tag", { delay: 200 });
 srtop.reveal(".about .content p", { delay: 200 });
-// srtop.reveal(".about .content p [data-lang='en']", { delay: 200 });
 srtop.reveal(".about .content .box-container", { delay: 200 });
 srtop.reveal(".about .content .resumebtn", { delay: 200 });
 

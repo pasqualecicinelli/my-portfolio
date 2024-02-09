@@ -31,38 +31,42 @@ document.addEventListener("visibilitychange", function () {
   }
 });
 
-// TOGGLE LANGUAGE IT OR EN
+// Start language IT
 document
   .querySelectorAll('[data-lang="en"]')
   .forEach((element) => (element.style.display = "none"));
-var currentLanguage = "it";
-
-function setCurrentLanguage(lang) {
-  currentLanguage = lang;
-}
-
-function toggleLanguage() {
-  var elementsIt = document.querySelectorAll('[data-lang="it"]');
-  var elementsEn = document.querySelectorAll('[data-lang="en"]');
-
-  elementsIt.forEach(function (element) {
-    element.style.display = currentLanguage === "it" ? "" : "none";
-    element.style.opacity = currentLanguage === "it" ? "1" : "0";
-  });
-  elementsEn.forEach(function (element) {
-    element.style.display = currentLanguage === "en" ? "" : "none";
-    element.style.opacity = currentLanguage === "en" ? "1" : "0";
-  });
-  setCurrentLanguage(currentLanguage === "en" ? "it" : "en");
-}
-document.getElementById("language").addEventListener("click", function (event) {
-  event.preventDefault();
-
+document.querySelector("#language").addEventListener("click", function (event) {
   if (event.target.tagName === "A") {
-    toggleLanguage();
-    showExperience(currentLanguage === "en" ? "it" : "en");
+    const filterValue = event.target.getAttribute("data-filter");
+    filterLang(filterValue);
   }
 });
+
+// Filter language
+function filterLang(filterValue) {
+  var elementsIt = document.querySelectorAll('[data-lang="it"]');
+  var elementsEn = document.querySelectorAll('[data-lang="en"]');
+  if (filterValue === "it") {
+    elementsIt.forEach(function (element) {
+      element.style.display = "";
+      element.style.opacity = 1;
+    });
+    elementsEn.forEach(function (element) {
+      element.style.display = "none";
+      element.style.opacity = 0;
+    });
+  } else if (filterValue === "en") {
+    elementsIt.forEach(function (element) {
+      element.style.display = "none";
+      element.style.opacity = 0;
+    });
+    elementsEn.forEach(function (element) {
+      element.style.display = "";
+      element.style.opacity = 1;
+    });
+  }
+  showExperience(filterValue);
+}
 
 //fetch experience start
 async function getExperience() {
@@ -71,6 +75,7 @@ async function getExperience() {
   return data;
 }
 
+// Create the document in html
 function showExperience(currentLanguage) {
   let experienceContainer = document.querySelector("#experience .timeline");
   let experienceHTML = "";
@@ -123,15 +128,11 @@ document.addEventListener("DOMContentLoaded", async function () {
   document.getElementById("loader-container").style.display = "flex";
 
   allExperience = await getExperience("experience");
-  toggleLanguage();
   showExperience("it");
-  // getExperience().then((data) => {
-  //   showExperience(data);
 
-  // Disattiva il pre-loader quando il caricamento è completo
+  // Disable the pre-loader when loading is complete
   document.getElementById("loader-container").style.display = "none";
 });
-// });
 
 // disable developer mode
 document.onkeydown = function (e) {
