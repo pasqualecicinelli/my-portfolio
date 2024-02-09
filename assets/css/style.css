@@ -826,6 +826,32 @@ header .navbar ul li a:hover {
   color: #fff;
   padding: 1rem;
 }
+.work .heading i {
+  animation-name: climb-and-slide;
+  animation-duration: 3s;
+  animation-iteration-count: 3;
+}
+
+@keyframes climb-and-slide {
+  0% {
+    transform: translateY(0) translateX(-60px);
+  }
+  15% {
+    transform: translateY(-20px) translateX(-50px);
+  }
+  25% {
+    transform: translateY(-40px) translateX(-40px);
+  }
+  50% {
+    transform: translateY(-60px) translateX(-30px);
+  }
+  80% {
+    transform: translateY(0) translateX(0);
+  }
+  100% {
+    transform: translateY(0) translateX(-60px);
+  }
+}
 .work .heading span {
   color: rgb(255, 230, 0);
 }
@@ -963,6 +989,28 @@ header .navbar ul li a:hover {
   }
 }
 /* experience section starts */
+.experience .heading i {
+  animation-name: walk;
+  animation-duration: 5s;
+  animation-iteration-count: 3;
+}
+@keyframes walk {
+  0% {
+    transform: translateY(0) translateX(-50px) rotate(0);
+  }
+  25% {
+    transform: translateY(-20px) translateX(-40px) rotate(10deg);
+  }
+  50% {
+    transform: translateY(0) translateX(-30px) rotate(-10deg);
+  }
+  75% {
+    transform: translateY(-20px) translateX(-20px) rotate(10deg);
+  }
+  100% {
+    transform: translateY(0) translateX(-10px) rotate(0);
+  }
+}
 .experience .quote {
   font-size: 1.5rem;
   text-align: center;
