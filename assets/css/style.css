@@ -75,7 +75,7 @@ header {
 }
 section {
   min-height: 100vh;
-  padding: 2rem 8%;
+  padding: 6.5rem 8%;
 }
 .heading {
   font-size: 3.5rem;
@@ -684,6 +684,26 @@ header .navbar ul li a:hover {
   background: #e5ecfb;
   min-height: 80vh;
 }
+.education .heading {
+  position: relative;
+}
+.education .heading i {
+  animation-name: rotate-up-down;
+  animation-duration: 3s;
+  animation-iteration-count: 3;
+  transform-origin: center;
+}
+@keyframes rotate-up-down {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  20% {
+    transform: translateY(-70px) rotate(360deg);
+  }
+  100% {
+    transform: translateY(0) rotate(360deg) rotateY(360deg);
+  }
+}
 .education .quote {
   font-size: 1.5rem;
   text-align: center;
@@ -1245,9 +1265,6 @@ header .navbar ul li a:hover {
   }
   body {
     padding-right: 0;
-  }
-  section {
-    padding: 2rem;
   }
 }
 /* common media queries ends*/
