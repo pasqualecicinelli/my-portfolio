@@ -423,19 +423,29 @@ header .navbar ul li a:hover {
 .about {
   background: rgb(255, 255, 255);
 }
-.about .heading span.rotate-y {
+.about .heading span.animation-rotate-storm {
   transform-style: preserve-3d;
-  animation-name: rotation-y;
-  animation-duration: 5s;
-  animation-iteration-count: 3;
+  animation-name: rotate-storm;
+  animation-duration: 6s;
+  animation-iteration-count: 2;
+  animation-timing-function: linear;
   display: inline-block;
 }
-@keyframes rotation-y {
-  from {
-    transform: rotateY(0deg);
+@keyframes rotate-storm {
+  0% {
+    transform: translateY(0) rotateY(0deg);
   }
-  to {
-    transform: rotateY(360deg);
+  25% {
+    transform: translateY(-20px) rotateY(180deg);
+  }
+  50% {
+    transform: translateY(-40px) rotateY(360deg);
+  }
+  75% {
+    transform: translateY(-20px) rotateY(180deg);
+  }
+  100% {
+    transform: translateY(0) rotateY(0deg);
   }
 }
 .about .quote {
@@ -541,6 +551,23 @@ header .navbar ul li a:hover {
 }
 /* about media queries starts*/
 @media screen and (max-width: 576px) {
+  @keyframes rotate-storm {
+    0% {
+      transform: translateY(0) rotateY(0deg);
+    }
+    25% {
+      transform: translateY(-20px) rotateY(180deg);
+    }
+    50% {
+      transform: translateY(-35px) rotateY(360deg);
+    }
+    75% {
+      transform: translateY(-20px) rotateY(180deg);
+    }
+    100% {
+      transform: translateY(0) rotateY(0deg);
+    }
+  }
   .about .quote {
     display: none;
   }
@@ -577,22 +604,20 @@ header .navbar ul li a:hover {
 .skills .heading span {
   color: rgb(255, 230, 0);
 }
-.skills .heading i {
+.skills .heading i.animation-rotate {
   animation-name: rotate;
   animation-duration: 3s;
-  animation-iteration-count: 3;
+  animation-iteration-count: 2;
 }
 @keyframes rotate {
   0% {
-    margin-right: 100px;
-    transform: rotate(0);
+    transform: translateX(0) rotate(0);
   }
-  90% {
-    transform: rotate(360deg);
-    margin-left: 150px;
+  80% {
+    transform: translateX(-50px) rotate(-360deg);
   }
   100% {
-    transform: rotate(0);
+    transform: translateX(0) rotate(0);
   }
 }
 .skills .quote {
@@ -687,10 +712,11 @@ header .navbar ul li a:hover {
 .education .heading {
   position: relative;
 }
-.education .heading i {
+.education .heading i.animation-rotate-up-down {
   animation-name: rotate-up-down;
   animation-duration: 3s;
-  animation-iteration-count: 3;
+  animation-iteration-count: 2;
+
   transform-origin: center;
 }
 @keyframes rotate-up-down {
@@ -826,30 +852,33 @@ header .navbar ul li a:hover {
   color: #fff;
   padding: 1rem;
 }
-.work .heading i {
+.work .heading i.animation-climb-and-slide {
   animation-name: climb-and-slide;
-  animation-duration: 3s;
-  animation-iteration-count: 3;
+  animation-duration: 4s;
+  animation-iteration-count: 2;
 }
 
 @keyframes climb-and-slide {
   0% {
-    transform: translateY(0) translateX(-60px);
-  }
-  15% {
-    transform: translateY(-20px) translateX(-50px);
-  }
-  25% {
-    transform: translateY(-40px) translateX(-40px);
-  }
-  50% {
-    transform: translateY(-60px) translateX(-30px);
-  }
-  80% {
     transform: translateY(0) translateX(0);
   }
-  100% {
+  20% {
+    transform: translateY(-10px) translateX(-20px);
+  }
+  40% {
+    transform: translateY(-20px) translateX(-30px);
+  }
+  60% {
+    transform: translateY(-40px) translateX(-40px);
+  }
+  70% {
+    transform: translateY(-60px) translateX(-50px);
+  }
+  80% {
     transform: translateY(0) translateX(-60px);
+  }
+  100% {
+    transform: translateY(0) translateX(0);
   }
 }
 .work .heading span {
@@ -989,10 +1018,10 @@ header .navbar ul li a:hover {
   }
 }
 /* experience section starts */
-.experience .heading i {
+.experience .heading i.animation-walk {
   animation-name: walk;
   animation-duration: 5s;
-  animation-iteration-count: 3;
+  animation-iteration-count: 2;
 }
 @keyframes walk {
   0% {
