@@ -109,7 +109,7 @@ function visible(selectedLanguage) {
   } else if (selectedLanguage === "en") {
     document.title = "Pasquale's Cicinelli | Portfolio";
   }
-  favElem.href = "../assets/images/favicon.png";
+  favElem.href = "./assets/images/favicon.png";
 }
 
 function hidden(selectedLanguage) {
@@ -119,7 +119,7 @@ function hidden(selectedLanguage) {
   } else if (selectedLanguage === "en") {
     document.title = "Go back to the Portfolio";
   }
-  favElem.href = "../assets/images/favhand.png";
+  favElem.href = "./assets/images/favhand.png";
 }
 
 // <!-- typed js effect starts for It and En-->
