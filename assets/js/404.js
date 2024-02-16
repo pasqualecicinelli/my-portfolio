@@ -3,11 +3,46 @@ $(document).ready(function () {
     $(this).toggleClass("fa-times");
     $(".navbar").toggleClass("nav-toggle");
   });
-  //Opens the language drop-down menu by clicking
-  $(".dropdown").click(function () {
-    $(this).toggleClass("open");
-    $("#language").toggle(); // Toggle the display property
+});
+
+document.addEventListener("DOMContentLoaded", async function () {
+  dropdownLang();
+
+  // Get the selected language from localStorage
+  var selectedLanguage = localStorage.getItem("selectedLanguage");
+
+  // If the selectedLanguage is null (meaning it's the first time visiting the page),
+  // set it to a default value ("it")
+  if (!selectedLanguage) {
+    selectedLanguage = "it";
+  }
+  localStorage.setItem("selectedLanguage", selectedLanguage);
+  filterLang(selectedLanguage);
+});
+
+// Dropdown Language
+function dropdownLang() {
+  document.querySelectorAll(".dropdown").forEach(function (dropdown) {
+    dropdown.addEventListener("click", function () {
+      this.classList.toggle("open");
+      var languageDropdown = document.getElementById("language");
+      if (this.classList.contains("open")) {
+        languageDropdown.style.display = "block";
+      } else {
+        languageDropdown.style.display = "none";
+      }
+    });
   });
+}
+
+// Set visibilitychange
+document.addEventListener("visibilitychange", function () {
+  var selectedLanguage = localStorage.getItem("selectedLanguage");
+  if (selectedLanguage === "it") {
+    document.title = "Ti sei perso! Pagina non trovata";
+  } else if (selectedLanguage === "en") {
+    document.title = "You are lost! Page not found";
+  }
 });
 
 // Start language IT
@@ -44,10 +79,9 @@ function filterLang(filterValue) {
       element.style.opacity = 1;
     });
   }
+  localStorage.setItem("selectedLanguage", filterValue);
+  document.dispatchEvent(new Event("visibilitychange"));
 }
-document.addEventListener("DOMContentLoaded", async function () {
-  filterLang();
-});
 
 // disable developer mode
 document.onkeydown = function (e) {

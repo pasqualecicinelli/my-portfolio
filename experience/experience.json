@@ -58,7 +58,10 @@
       "en": "Excellent organizational skills acquired during my volunteer experience with the ANPAS Civil Protection group, where I served as a driver and first responder in wildland firefighting"
     },
     "place": "Cellamare (BA),",
-    "data": "2009 - 2013",
+    "data": {
+      "it": "2009 - 2013",
+      "en": "2009 - 2013"
+    },
     "show": true
   },
   {

@@ -14,27 +14,75 @@ $(document).ready(function () {
       document.querySelector("#scroll-top").classList.remove("active");
     }
   });
-  //Opens the language drop-down menu by clicking
-  $(".dropdown").click(function () {
-    $(this).toggleClass("open");
-    $("#language").toggle(); // Toggle the display property
-  });
 });
 
+// We have a pre-loader before mounting the page
+document.addEventListener("DOMContentLoaded", async function () {
+  document.getElementById("loader-container").style.display = "flex";
+
+  dropdownLang();
+
+  // Get the selected language from localStorage
+  var selectedLanguage = localStorage.getItem("selectedLanguage");
+  localStorage.setItem("selectedLanguage", selectedLanguage);
+
+  allExperience = await getExperience("experience");
+  showExperience(selectedLanguage);
+
+  filterLang(selectedLanguage);
+  // Disable the pre-loader when loading is complete
+  document.getElementById("loader-container").style.display = "none";
+});
+
+// Dropdown Language
+function dropdownLang() {
+  document.querySelectorAll(".dropdown").forEach(function (dropdown) {
+    dropdown.addEventListener("click", function () {
+      this.classList.toggle("open");
+      var languageDropdown = document.getElementById("language");
+      if (this.classList.contains("open")) {
+        languageDropdown.style.display = "block";
+      } else {
+        languageDropdown.style.display = "none";
+      }
+    });
+  });
+}
+
+// Set visibilitychange
 document.addEventListener("visibilitychange", function () {
+  var selectedLanguage = localStorage.getItem("selectedLanguage");
   if (document.visibilityState === "visible") {
-    document.title = "Esperienze | Portfolio Pasquale Cicinelli";
-    $("#favicon").attr("href", "../assets/images/favicon.png");
-  } else {
-    document.title = "Torna indietro al Portfolio";
-    $("#favicon").attr("href", "../assets/images/favhand.png");
+    visible(selectedLanguage);
+  } else if (document.visibilityState === "hidden") {
+    hidden(selectedLanguage);
   }
 });
 
+function visible(selectedLanguage) {
+  let favElem = document.getElementById("favicon");
+  if (selectedLanguage === "it") {
+    document.title = "Esperienze | Pasquale Cicinelli";
+  } else {
+    document.title = "Pasquale's Cicinelli | Experience";
+  }
+  favElem.href = "../assets/images/favicon.png";
+}
+
+function hidden(selectedLanguage) {
+  let favElem = document.getElementById("favicon");
+  if (selectedLanguage === "it") {
+    document.title = "Torna indietro al Portfolio";
+  } else {
+    document.title = "Go back to the Portfolio";
+  }
+  favElem.href = "../assets/images/favhand.png";
+}
+
 // Start language IT
-document
-  .querySelectorAll('[data-lang="en"]')
-  .forEach((element) => (element.style.display = "none"));
+// document
+//   .querySelectorAll('[data-lang="en"]')
+//   .forEach((element) => (element.style.display = "none"));
 document.querySelector("#language").addEventListener("click", function (event) {
   if (event.target.tagName === "A") {
     const filterValue = event.target.getAttribute("data-filter");
@@ -66,6 +114,16 @@ function filterLang(filterValue) {
     });
   }
   showExperience(filterValue);
+
+  // Sets the value of filterValue in localStorage
+  localStorage.setItem("selectedLanguage", filterValue);
+
+  // see if the value is visible or hidden and pass filterValue
+  if (document.visibilityState === "visible") {
+    visible(filterValue);
+  } else if (document.visibilityState === "hidden") {
+    hidden(filterValue);
+  }
 }
 
 //fetch experience start
@@ -122,17 +180,6 @@ function showExperience(currentLanguage) {
   srtop.reveal(".experience .timeline", { delay: 400 });
   srtop.reveal(".experience .timeline .container", { interval: 400 });
 }
-
-// We have a pre-loader before mounting the page
-document.addEventListener("DOMContentLoaded", async function () {
-  document.getElementById("loader-container").style.display = "flex";
-
-  allExperience = await getExperience("experience");
-  showExperience("it");
-
-  // Disable the pre-loader when loading is complete
-  document.getElementById("loader-container").style.display = "none";
-});
 
 // disable developer mode
 document.onkeydown = function (e) {

@@ -39,24 +39,88 @@ $(document).ready(function () {
       "linear"
     );
   });
+});
 
-  //Opens the language drop-down menu by clicking
-  $(".dropdown").click(function () {
-    $(this).toggleClass("open");
-    $("#language").toggle(); // Toggle the display property
+// We have a pre-loader before mounting the page
+document.addEventListener("DOMContentLoaded", async function () {
+  document.getElementById("loader-container").style.display = "flex";
+
+  dropdownLang();
+
+  // Run the animation
+  checkAnimation();
+
+  // Get the selected language from localStorage
+  var selectedLanguage = localStorage.getItem("selectedLanguage");
+
+  // If the selectedLanguage is null (meaning it's the first time visiting the page),
+  // set it to a default value ("it")
+  if (!selectedLanguage) {
+    selectedLanguage = "it";
+  }
+  localStorage.setItem("selectedLanguage", selectedLanguage);
+
+  // Request project data and store it in projects
+  projects = await fetchData("projects");
+
+  showProjects(selectedLanguage);
+
+  experience = await fetchData("experience");
+  showExperience(selectedLanguage);
+
+  filterLang(selectedLanguage);
+
+  skills = await fetchData("skills");
+  showSkills(skills);
+
+  // Disable the pre-loader when loading is complete
+  document.getElementById("loader-container").style.display = "none";
+});
+
+// Dropdown Language
+function dropdownLang() {
+  document.querySelectorAll(".dropdown").forEach(function (dropdown) {
+    dropdown.addEventListener("click", function () {
+      this.classList.toggle("open");
+      var languageDropdown = document.getElementById("language");
+      if (this.classList.contains("open")) {
+        languageDropdown.style.display = "block";
+      } else {
+        languageDropdown.style.display = "none";
+      }
+    });
   });
-});
+}
 
-// Set if is visible or not
+// Set visibilitychange
 document.addEventListener("visibilitychange", function () {
-  document.visibilityState === "visible"
-    ? (document.title = "Portfolio | Pasquale Cicinelli")
-    : (document.title = "Torna indietro al Portfolio");
-
-  document.visibilityState === "visible"
-    ? $("#favicon").attr("href", "assets/images/favicon.png")
-    : $("#favicon").attr("href", "assets/images/favhand.png");
+  var selectedLanguage = localStorage.getItem("selectedLanguage");
+  if (document.visibilityState === "visible") {
+    visible(selectedLanguage);
+  } else if (document.visibilityState === "hidden") {
+    hidden(selectedLanguage);
+  }
 });
+
+function visible(selectedLanguage) {
+  let favElem = document.getElementById("favicon");
+  if (selectedLanguage === "it") {
+    document.title = "Portfolio | Pasquale Cicinelli";
+  } else if (selectedLanguage === "en") {
+    document.title = "Pasquale's Cicinelli | Portfolio";
+  }
+  favElem.href = "../assets/images/favicon.png";
+}
+
+function hidden(selectedLanguage) {
+  let favElem = document.getElementById("favicon");
+  if (selectedLanguage === "it") {
+    document.title = "Torna indietro al Portfolio";
+  } else if (selectedLanguage === "en") {
+    document.title = "Go back to the Portfolio";
+  }
+  favElem.href = "../assets/images/favhand.png";
+}
 
 // <!-- typed js effect starts for It and En-->
 var typed = new Typed(".typing-text", {
@@ -99,13 +163,10 @@ function checkAnimation() {
 // Add a listener for the scroll event
 window.addEventListener("scroll", checkAnimation);
 
-// Run the animation immediately if the element is already visible when the page loads
-document.addEventListener("DOMContentLoaded", checkAnimation);
-
 // Start language IT
-document
-  .querySelectorAll('[data-lang="en"]')
-  .forEach((element) => (element.style.display = "none"));
+// document
+//   .querySelectorAll('[data-lang="en"]')
+//   .forEach((element) => (element.style.display = "none"));
 document.querySelector("#language").addEventListener("click", function (event) {
   if (event.target.tagName === "A") {
     const filterValue = event.target.getAttribute("data-filter");
@@ -138,6 +199,16 @@ function filterLang(filterValue) {
   }
   showProjects(filterValue);
   showExperience(filterValue);
+
+  // Sets the value of filterValue in localStorage
+  localStorage.setItem("selectedLanguage", filterValue);
+
+  // see if the value is visible or hidden and pass filterValue
+  if (document.visibilityState === "visible") {
+    visible(filterValue);
+  } else if (document.visibilityState === "hidden") {
+    hidden(filterValue);
+  }
 }
 
 async function fetchData(type = "skills") {
@@ -275,25 +346,6 @@ function showExperience(currentLanguage) {
   srtop.reveal(".experience .timeline .container", { interval: 400 });
 }
 
-// We have a pre-loader before mounting the page
-document.addEventListener("DOMContentLoaded", async function () {
-  document.getElementById("loader-container").style.display = "flex";
-
-  // Request project data and store it in projects
-  projects = await fetchData("projects");
-
-  showProjects("it");
-
-  experience = await fetchData("experience");
-  showExperience("it");
-
-  skills = await fetchData("skills");
-  showSkills(skills);
-
-  // Disable the pre-loader when loading is complete
-  document.getElementById("loader-container").style.display = "none";
-});
-
 // <!-- tilt js effect starts -->
 VanillaTilt.init(document.querySelectorAll(".tilt"), {
   max: 15,
@@ -370,24 +422,3 @@ srtop.reveal(".education .box", { interval: 200 });
 /* SCROLL EXPERIENCE */
 // srtop.reveal(".experience .timeline", { delay: 400 });
 // srtop.reveal(".experience .timeline .container", { interval: 400 });
-
-// Animation with set interval
-// document.addEventListener("DOMContentLoaded", function () {
-//   animation();
-// });
-// function animation() {
-//   var animationElements = document.querySelectorAll("[data-animation]");
-//   {
-//     animationElements.forEach(function (element) {
-//       var attrAnimation = element.getAttribute("data-animation");
-//       var classAnimation = "animation-" + attrAnimation;
-//       element.classList.add(classAnimation);
-//       setTimeout(function () {
-//         element.classList.remove(classAnimation);
-//       }, 6000);
-//     });
-//   }
-// }
-// setInterval(function () {
-//   animation();
-// }, 8000);
