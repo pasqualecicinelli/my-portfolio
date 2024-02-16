@@ -426,6 +426,7 @@ header .navbar ul li a:hover {
 .footer {
   min-height: auto;
   padding-top: 0;
+  padding-bottom: 2rem;
   background: rgb(0, 1, 43);
 }
 .footer .box-container {

@@ -415,6 +415,11 @@ header .navbar ul li a:hover {
   .home .content p span {
     font-size: 2.2rem;
   }
+  .home .content p > *:first-child {
+    display: block;
+    content: "\A";
+    white-space: pre;
+  }
 }
 /* hero media queries ends*/
 /* hero section end */
@@ -621,7 +626,7 @@ header .navbar ul li a:hover {
   }
 }
 .skills .quote {
-  width: 60%;
+  width: 75%;
   color: #fff;
   font-size: 1.5rem;
   text-align: center;
@@ -679,6 +684,9 @@ header .navbar ul li a:hover {
 }
 /* skills tablet media queries starts*/
 @media screen and (max-width: 768px) {
+  .skills .quote {
+    width: 100%;
+  }
   .skills .container {
     padding: 0;
     margin: 0;
@@ -812,6 +820,18 @@ header .navbar ul li a:hover {
 @media screen and (max-width: 576px) {
   .education .quote {
     display: none;
+  }
+
+  @keyframes rotate-up-down {
+    0% {
+      transform: translateY(0) rotate(0deg);
+    }
+    20% {
+      transform: translateY(-60px) rotate(360deg);
+    }
+    100% {
+      transform: translateY(0) rotate(360deg) rotateY(360deg);
+    }
   }
   .education .box-container .box {
     flex-direction: column;
@@ -987,6 +1007,7 @@ header .navbar ul li a:hover {
   transition: 0.5s;
   font-weight: 700;
   background-color: #fff;
+  border: 1px solid transparent;
   color: #2506ad;
   box-shadow: 0px 5px 10px rgba(65, 84, 241, 0.4);
   text-align: center;
@@ -1193,9 +1214,6 @@ header .navbar ul li a:hover {
   .experience {
     min-height: 80vh;
   }
-  .experience .quote {
-    display: none;
-  }
   .experience .timeline {
     margin-top: 2rem;
   }
@@ -1229,6 +1247,11 @@ header .navbar ul li a:hover {
     margin-top: 3rem;
   }
 }
+@media screen and (max-width: 576px) {
+  .experience .quote {
+    display: none;
+  }
+}
 /* experience media queries ends */
 /* experience section ends */
 
@@ -1236,6 +1259,7 @@ header .navbar ul li a:hover {
 .footer {
   min-height: auto;
   padding-top: 0;
+  padding-bottom: 2rem;
   background: rgb(0, 1, 43);
 }
 .footer .box-container {
