@@ -97,8 +97,6 @@ header .logo {
   font-weight: 800;
   text-decoration: none;
   color: #0e2431;
-  /* line-height: 400px; */
-  /* margin-left: 1rem; */
 }
 header .logo i {
   font-size: 2.2rem;
@@ -147,10 +145,9 @@ header .navbar .dropdown #language {
   padding: 0;
 }
 header .navbar .dropdown #language li {
-  /* display: block; */
   padding: 10px;
   cursor: pointer;
-  margin-left: 0 !important;
+  margin-left: 0;
 }
 #language {
   display: none;
@@ -271,12 +268,12 @@ header .navbar ul li a:hover {
   width: 100%;
 }
 .home .content {
-  flex: 1 1 40rem;
+  flex: 1 1 48rem;
   padding-top: 1rem;
   z-index: 1;
 }
 .home .image {
-  flex: 1 1 39rem;
+  flex: 1 1 32rem;
   z-index: 1;
 }
 .home .image img {
@@ -415,7 +412,7 @@ header .navbar ul li a:hover {
   .home .content p span {
     font-size: 2.2rem;
   }
-  .home .content p > *:first-child {
+  .home .content p .go-down {
     display: block;
     content: "\A";
     white-space: pre;
