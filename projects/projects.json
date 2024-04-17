@@ -78,6 +78,19 @@
     }
   },
   {
+    "name": "Boolflix",
+    "desc": {
+      "it": "La mia app emula Netflix, mostrando locandine in base alla ricerca dell'utente. Se non ci sono risultati corrispondenti, verrà visualizzato un messaggio",
+      "en": "My app emulates Netflix, displaying posters based on user search. If there are no matching results, a message will be displayed."
+    },
+    "image": "boolflix",
+    "category": "front-end",
+    "links": {
+      "view": "https://661fda2173bf914c20b431eb--bool-netflix.netlify.app/",
+      "code": "https://github.com/pasqualecicinelli/vite-boolflix"
+    }
+  },
+  {
     "name": "Deliveboo Front-end",
     "desc": {
       "it": "Il frontend di Deliveboo permette ai clienti di esplorare, ordinare e pagare piatti da un unico ristorante. Realizzato con Vue.js e Braintree",

@@ -259,7 +259,7 @@ function showProjects(currentLanguage) {
   let projectsContainer = document.querySelector("#work .box-container");
   let projectHTML = "";
   projects
-    .slice(0, 6)
+    .slice(0, 8)
     .filter((project) => project.category != "android")
     .forEach((project) => {
       projectHTML += `
