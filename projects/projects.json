@@ -86,7 +86,7 @@
     "image": "boolflix",
     "category": "front-end",
     "links": {
-      "view": "https://661fda2173bf914c20b431eb--bool-netflix.netlify.app/",
+      "view": "https://bool-netflix.netlify.app/",
       "code": "https://github.com/pasqualecicinelli/vite-boolflix"
     }
   },
