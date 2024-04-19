@@ -30,10 +30,15 @@ $(document).ready(function () {
 
   // smooth scrolling
   $('a[href*="#"]').on("click", function (e) {
+    //Take the tag section and calculate the scroll with padding at the top of the section
+
+    let tagSection = document.getElementsByTagName("section")[0];
+    let paddingSection = parseFloat(getComputedStyle(tagSection).paddingTop);
     e.preventDefault();
+
     $("html, body").animate(
       {
-        scrollTop: $($(this).attr("href")).offset().top,
+        scrollTop: $($(this).attr("href")).offset().top - paddingSection,
       },
       500,
       "linear"
@@ -231,7 +236,7 @@ function showSkills(skills) {
     skillHTML += `
         <div class="bar">
               <div class="info">
-                <img src=${skill.icon} alt="skill" />
+                <img src=${skill.icon} alt="skill: ${skill.name}" />
                 <span>${skill.name}</span>
               </div>
             </div>`;
@@ -266,7 +271,7 @@ function showProjects(currentLanguage) {
         <div class="box tilt">
       <img draggable="false"
        src="./assets/images/projects/${project.image}.png" 
-       alt="project" />
+       alt="project: ${project.name}" />
       <div class="content">
         <div class="tag">
         <h3>${project.name}</h3>
