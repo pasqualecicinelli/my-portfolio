@@ -48,8 +48,6 @@ $(document).ready(function () {
 
 // We have a pre-loader before mounting the page
 document.addEventListener("DOMContentLoaded", async function () {
-  document.getElementById("loader-container").style.display = "flex";
-
   dropdownLang();
 
   // Run the animation
