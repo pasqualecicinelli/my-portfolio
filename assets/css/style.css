@@ -161,13 +161,13 @@ header .navbar ul li a {
   font-weight: 600;
   text-decoration: none;
   letter-spacing: 0.04rem;
+  padding: 0.5rem 0;
   transition: 0.2s;
 }
 header .navbar ul li a.active,
 header .navbar ul li a:hover {
   color: #011aff;
   border-bottom: 0.2rem solid #011aff;
-  padding: 0.5rem 0;
 }
 
 /* navbar ends */
