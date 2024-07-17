@@ -42,7 +42,7 @@
     "name": "Campo minato",
     "desc": {
       "it": "In Campo minato l'utente può scegliere i vari livelli di gioco, se clicca sulla bomba apparirà il punteggio stabilito, altrimenti riceverà le Congratulazioni",
-      "en": "In Minesweeper, the user can choose various game levels; if they click on the bomb, the established score will appear, otherwise, they will receive Congratulations"
+      "en": "In Minesweeper, the user can choose various game levels; if they click on the bomb, the established score will appear, otherwise he will have won"
     },
     "image": "campo-minato",
     "category": "basicweb",
@@ -80,7 +80,7 @@
   {
     "name": "Boolflix",
     "desc": {
-      "it": "La mia app emula Netflix, mostrando locandine in base alla ricerca dell'utente. Se non ci sono risultati corrispondenti, verrà visualizzato un messaggio",
+      "it": "La mia app emula Netflix, mostrando locandine in base alla ricerca dell'utente. Se non ci sono risultati, verrà visualizzato un messaggio",
       "en": "My app emulates Netflix, displaying posters based on user search. If there are no matching results, a message will be displayed."
     },
     "image": "boolflix",
