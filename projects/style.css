@@ -8,7 +8,7 @@
   text-decoration: none;
   outline: none;
   border: none;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   transition: all 0.2s linear;
 }
 html {
@@ -356,7 +356,6 @@ header .navbar ul li a:hover {
   font-size: 1.5rem;
   color: #fff;
   background: rgb(12, 12, 12);
-  margin-right: 2rem;
 }
 .work .desc .btns a.btn.disabled {
   color: #999;
