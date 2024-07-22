@@ -390,6 +390,17 @@ header .navbar ul li a:hover {
   background-color: #ee00da;
 } */
 /* social icons end */
+.home .content p {
+  color: #002057;
+}
+
+.home .content p span {
+  color: #ff7b00;
+}
+.home .content .counter-value {
+  display: inline-block;
+  transition: transform 0.1s;
+}
 
 /* Home tablet media queris starts*/
 @media (max-width: 992px) {

@@ -52,15 +52,15 @@
     "icon": "https://img.icons8.com/color/48/000000/bootstrap.png"
   },
   {
-    "name": "FontAwesome",
-    "icon": "https://img.icons8.com/?size=48&id=swoL_zWlOGpk&format=png&color=5B78EC"
-  },
-  {
     "name": "React",
     "icon": "https://img.icons8.com/?size=48&id=wPohyHO_qO1a&format=png&color=000000"
   },
   {
     "name": "Typescript",
     "icon": "https://img.icons8.com/?size=48&id=uJM6fQYqDaZK&format=png&color=000000"
+  },
+  {
+    "name": "Chakra",
+    "icon": "https://img.icons8.com/?size=48&id=r9QJ0VFFrn7T&format=png&color=000000"
   }
 ]

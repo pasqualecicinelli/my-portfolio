@@ -53,6 +53,8 @@ document.addEventListener("DOMContentLoaded", async function () {
   // Run the animation
   checkAnimation();
 
+  updateVisitCounter();
+
   // Get the selected language from localStorage
   var selectedLanguage = localStorage.getItem("selectedLanguage");
 
@@ -125,9 +127,57 @@ function hidden(selectedLanguage) {
   favElem.href = "./assets/images/favhand.png";
 }
 
+//Set Visit
+function updateVisitCounter() {
+  const visitCounters = document.querySelectorAll(".visit-counter");
+
+  let visits = localStorage.getItem("visitCount") || 0;
+
+  // Converte il valore in un intero decimale
+  visits = parseInt(visits, 10);
+
+  // Controlla se l'utente ha già visitato il sito
+  let isFirstVisit = !localStorage.getItem("visited");
+
+  if (isFirstVisit) {
+    localStorage.setItem("visited", true);
+    visits++;
+    localStorage.setItem("visitCount", visits);
+  }
+  // Aggiorno il valore del contatore con l'animazione
+  visitCounters.forEach((counter) => {
+    const counterValue = counter.querySelector(".counter-value");
+    animateCounter(counterValue, visits, 2000);
+  });
+}
+
+// Animate visit counter
+function animateCounter(element, finalValue, duration) {
+  const stepTime = Math.floor(duration / 100); // Durata per ogni passo da 0 a 100
+  let current = 0;
+
+  const timer = setInterval(() => {
+    if (current <= 100) {
+      element.textContent = current;
+      element.style.transform = "scale(1.2)";
+      setTimeout(() => {
+        element.style.transform = "scale(1)";
+      }, 50);
+      current++;
+    } else {
+      clearInterval(timer);
+      element.textContent = finalValue;
+      element.style.transform = "scale(1.2)";
+      setTimeout(() => {
+        element.style.transform = "scale(1)";
+      }, 50);
+    }
+  }, stepTime);
+}
+
 // <!-- typed js effect starts for It and En-->
 var typed = new Typed(".typing-text", {
-  strings: ["frontend development", "backend development", "web development"],
+  strings: ["Frontend development", "Backend development", "Web development"],
   loop: true,
   typeSpeed: 100,
   backSpeed: 25,
@@ -348,12 +398,6 @@ function showExperience(currentLanguage) {
   srtop.reveal(".experience .timeline", { delay: 400 });
   srtop.reveal(".experience .timeline .container", { interval: 400 });
 }
-
-// <!-- tilt js effect starts -->
-VanillaTilt.init(document.querySelectorAll(".tilt"), {
-  max: 15,
-});
-// <!-- tilt js effect ends -->
 
 // pre loader start
 // function loader() {
