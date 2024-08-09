@@ -127,27 +127,30 @@ function hidden(selectedLanguage) {
   favElem.href = "./assets/images/favhand.png";
 }
 
+/** Creare un database e metterlo sull'hosting Netlify
+ * Creare un ramo features-backend-visits
+ */
+
 //Set Visit
 function updateVisitCounter() {
   const visitCounters = document.querySelectorAll(".visit-counter");
+  // let visits = localStorage.getItem("visitCount") || 0;
 
-  let visits = localStorage.getItem("visitCount") || 0;
-
-  // Converte il valore in un intero decimale
-  visits = parseInt(visits, 10);
+  // // Converte il valore in un intero decimale
+  // visits = parseInt(visits, 10);
 
   // Controlla se l'utente ha già visitato il sito
-  let isFirstVisit = !localStorage.getItem("visited");
+  // let isFirstVisit = !localStorage.getItem("visited");
 
-  if (isFirstVisit) {
-    localStorage.setItem("visited", true);
-    visits++;
-    localStorage.setItem("visitCount", visits);
-  }
+  // if (isFirstVisit) {
+  //   localStorage.setItem("visited", true);
+  //   visits++;
+  //   localStorage.setItem("visitCount", visits);
+  // }
   // Aggiorno il valore del contatore con l'animazione
   visitCounters.forEach((counter) => {
     const counterValue = counter.querySelector(".counter-value");
-    animateCounter(counterValue, visits, 2000);
+    animateCounter(counterValue, totalVisits, 2000);
   });
 }
 

@@ -51,19 +51,7 @@
       "code": "https://github.com/pasqualecicinelli/js-campominato-dom"
     }
   },
-  {
-    "name": "Portfolio",
-    "desc": {
-      "it": "Creato con Html, css, javascript e jquery, del tutto responsive e con tanti effetti grafici",
-      "en": "Created with Html, css, javascript, and jquery, entirely responsive and with many graphic effects"
-    },
-    "image": "Portfolio",
-    "category": "basicweb",
-    "links": {
-      "view": "https://pasqualecicinelli.github.io/my-portfolio/",
-      "code": "https://github.com/pasqualecicinelli/my-portfolio"
-    }
-  },
+
   {
     "name": "Lyricsmus jazz",
     "desc": {
@@ -88,6 +76,19 @@
     "links": {
       "view": "https://vite-boolflix.netlify.app/",
       "code": "https://github.com/pasqualecicinelli/vite-boolflix"
+    }
+  },
+  {
+    "name": "Portfolio",
+    "desc": {
+      "it": "Realizzato con HTML, CSS, JavaScript, jQuery, PHP e MySQL, questo sito responsive include effetti grafici, cambio lingua e conteggio visite",
+      "en": "Built with HTML, CSS, JavaScript, jQuery, PHP, and MySQL, this fully responsive website features graphic effects, language switching, and visit tracking"
+    },
+    "image": "Portfolio",
+    "category": "basicweb",
+    "links": {
+      "view": "https://pasqualecicinelli.github.io/my-portfolio/",
+      "code": "https://github.com/pasqualecicinelli/my-portfolio"
     }
   },
   {
